@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>片刻 Pianke · 隱私權政策 Privacy Policy</title>
+<meta name="description" content="片刻 Pianke 的隱私權政策:完全離線、無網路權限,不收集/傳輸/上傳任何資料。Privacy policy for the fully-offline business-card scanner.">
+<style>
+  html, body { margin: 0; }
+  * { box-sizing: border-box; }
+  #pp {
+    --paper:#FAF9F5; --ink:#17201E; --muted:#5C6660; --line:#E5E1D6; --card:#FFFFFF;
+    --teal:#0A4F4A; --teal-d:#063633; --cyan:#6FF6FE; --cyan-soft:#E4FBFC;
+    --ui:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    --mono:"SF Mono","JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+    background:var(--paper); color:var(--ink); font-family:var(--ui); line-height:1.65;
+    min-height:100vh; padding:0 0 64px;
+  }
+  #pp[data-theme="dark"]{ --paper:#0E1815; --ink:#E0E3DF; --muted:#8F9A94; --line:#223029; --card:#14201D; --teal:#4CD9E2; --teal-d:#6FF6FE; --cyan-soft:#0d2b2a; }
+  #pp .wrap{ max-width:760px; margin:0 auto; padding:0 clamp(18px,4vw,32px); }
+  #pp header.top{ background:var(--teal); color:#EAFFFE; padding:36px 0 30px; margin-bottom:8px; }
+  #pp .top .wrap{ display:flex; align-items:flex-end; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+  #pp .mark{ font-size:30px; font-weight:700; letter-spacing:-.02em; }
+  #pp .mark small{ font-size:15px; font-weight:600; opacity:.85; margin-left:8px; }
+  #pp .top p{ margin:6px 0 0; font-size:13px; opacity:.9; }
+  #pp .toggle{ background:rgba(255,255,255,.15); color:#EAFFFE; border:1px solid rgba(255,255,255,.35); border-radius:999px; padding:7px 14px; font:inherit; font-size:12.5px; font-weight:600; cursor:pointer; }
+  #pp .toggle:focus-visible{ outline:2px solid #EAFFFE; outline-offset:2px; }
+  #pp .updated{ font-family:var(--mono); font-size:12px; color:var(--muted); margin:18px 0 2px; }
+  #pp .callout{ background:var(--cyan-soft); border:1px solid var(--line); border-left:4px solid var(--teal); border-radius:12px; padding:14px 16px; margin:14px 0 26px; font-size:15px; }
+  #pp .callout b{ color:var(--teal-d); }
+  #pp h2{ font-size:15px; letter-spacing:.06em; text-transform:uppercase; color:var(--teal); margin:34px 0 14px; padding-bottom:8px; border-bottom:1px solid var(--line); }
+  #pp h3{ font-size:16px; margin:20px 0 6px; }
+  #pp p{ margin:8px 0; }
+  #pp ul{ margin:8px 0; padding-left:22px; }
+  #pp li{ margin:5px 0; }
+  #pp .lang{ font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+  #pp code{ background:var(--card); border:1px solid var(--line); border-radius:5px; padding:1px 6px; font-family:var(--mono); font-size:.9em; }
+  #pp .tablewrap{ overflow-x:auto; margin:12px 0; }
+  #pp table.perm{ width:100%; border-collapse:collapse; font-size:13.5px; min-width:460px; }
+  #pp table.perm th, #pp table.perm td{ text-align:left; padding:9px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  #pp table.perm th{ font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); font-weight:600; }
+  #pp table.perm td code{ white-space:nowrap; }
+  #pp table.perm tr.removed td{ color:var(--muted); }
+  #pp footer{ margin-top:40px; padding-top:18px; border-top:1px solid var(--line); font-size:12.5px; color:var(--muted); }
+</style>
+</head>
+<body>
+
+<div id="pp" data-theme="light">
+  <header class="top">
+    <div class="wrap">
+      <div class="mark">片刻 <small>Pianke · Privacy Policy</small></div>
+      <button class="toggle" id="pp-toggle" aria-label="切換淺色/深色">深色 / Dark</button>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="updated">Last updated / 最後更新:2026-07-03</div>
+    <div class="callout"><b>片刻 (Pianke) runs entirely on your device and has no internet access.</b> It does not collect, transmit, or upload any of your data — there are no accounts, no servers, and no cloud. — <b>本 App 完全在你的裝置上運作、沒有網路權限,不收集、不傳輸、不上傳你的任何資料;沒有帳號、沒有伺服器、沒有雲端。</b></div>
+
+    <!-- ============ English ============ -->
+    <h2>English</h2>
+
+    <h3>Who this is from</h3>
+    <p>片刻 (Pianke) is a business-card scanner and contact organizer. It works fully offline. We (the developer) operate no servers and receive none of your information — so this policy is mostly a description of what stays on <em>your</em> device and what only ever leaves it when <em>you</em> deliberately send it somewhere.</p>
+
+    <h3>What the app stores (on your device only)</h3>
+    <ul>
+      <li>The corrected photo of each scanned card (the original capture is discarded).</li>
+      <li>The recognized text and parsed fields: name, company, title, phone numbers, email, address, website, and your notes.</li>
+      <li>Any tags you add and an optional follow-up reminder time you set for a card.</li>
+      <li>Your own “My Card” details and the optional avatar image you pick for it.</li>
+      <li>Your settings (default country for phone formatting, theme, whether app lock is on).</li>
+    </ul>
+    <p>All of this lives in the app's private storage on your device. It is never sent to us or any third party. The shipped app declares <b>no internet permission</b> — verified in the app's final merged manifest — so it is technically unable to make a network connection or upload anything.</p>
+
+    <h3>Scanning: camera, text recognition &amp; QR</h3>
+    <ul>
+      <li><b>Camera</b> — image capture is performed by <b>Google Play Services' on-device document scanner</b>; the image is returned to the app and stored only on your device. The app does not run a camera in the background and does not access your photo library except for an image you explicitly pick (to scan, or to use as your “My Card” avatar).</li>
+      <li><b>Text recognition (OCR)</b> — uses Google's <b>ML Kit on-device</b> recognizer, processing the image locally on your phone. The image and text are not sent off the device.</li>
+      <li><b>QR / barcode</b> — if a card carries a contact QR code, it is decoded <b>on-device</b> (ZXing, a pure offline library) to help pre-fill the fields. No network is used.</li>
+    </ul>
+
+    <h3>Sharing &amp; exporting (all user-initiated)</h3>
+    <p>Information leaves the app only when <b>you</b> choose to send it out — never automatically:</p>
+    <ul>
+      <li>Export a card as a standard <code>.vcf</code> (vCard) or <code>.csv</code> file through the Android share sheet to a destination app you pick.</li>
+      <li>Save a card into your phone's <b>Contacts</b> app — the app opens the system Contacts screen pre-filled and <b>you</b> confirm the save (no contacts permission is used).</li>
+      <li>Export a card's image as a <b>PDF or JPEG</b> to a location you choose.</li>
+      <li>Display a card (including your “My Card”) as a <b>QR code</b> for someone to scan — your private notes and tags are deliberately excluded.</li>
+    </ul>
+    <p>Once information is handed to another app, or saved to a location you selected, we do not control what happens to it next.</p>
+
+    <h3>Backup &amp; restore (local, and only when you ask)</h3>
+    <ul>
+      <li>You can export a backup of your cards and import it later. A backup is created only when you tap Export, and is handed to a destination you choose (e.g. Files, a messaging app, your own cloud drive). We never receive it.</li>
+      <li>You can protect a backup with a password: it is encrypted on-device with <b>AES-256-GCM</b> using a key derived from your password (PBKDF2, high iteration count). We cannot read or recover a password-protected backup — keep your password safe.</li>
+      <li>Automatic system/cloud backup is <b>disabled</b> (<code>allowBackup=false</code>), so your card data is not silently copied to cloud backup without your action.</li>
+    </ul>
+
+    <h3>Follow-up reminders</h3>
+    <p>If you set a follow-up reminder on a card, the app schedules a <b>local notification</b> on your device for that time and re-schedules pending reminders after a reboot. This is entirely on-device; nothing is sent over a network.</p>
+
+    <h3>App lock</h3>
+    <p>You can optionally require your device biometric (fingerprint/face) or screen lock to open the app. This is handled by Android's system prompt — <b>the app never sees or stores your biometric data</b>. While app lock is on, the app also hides its contents from the app switcher and screenshots.</p>
+
+    <h3>Permissions the app uses</h3>
+    <div class="tablewrap">
+      <table class="perm">
+        <thead><tr><th>Permission</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td><code>POST_NOTIFICATIONS</code></td><td>Show the local follow-up reminder you set. No network.</td></tr>
+          <tr><td><code>RECEIVE_BOOT_COMPLETED</code></td><td>Re-arm your pending reminders after the phone restarts (alarms are cleared on reboot).</td></tr>
+          <tr><td><code>USE_BIOMETRIC</code>, <code>USE_FINGERPRINT</code></td><td>Optional app lock, via Android's system prompt. The app never receives your biometric data.</td></tr>
+          <tr class="removed"><td><code>INTERNET</code>, <code>ACCESS_NETWORK_STATE</code></td><td><b>Removed.</b> These were pulled in transitively by a Google library; we explicitly strip them so the shipped app cannot use the network.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Data retention &amp; deletion</h3>
+    <ul>
+      <li>Delete an individual scanned card at any time.</li>
+      <li><b>Settings → Clear local data</b> deletes your saved scanned cards and their images, plus any plaintext files the app left in its cache. Your separate “My Card” profile is not affected by this.</li>
+      <li>Uninstalling the app removes all of its data from your device, including your “My Card” and its avatar.</li>
+    </ul>
+    <p>We retain nothing, because we never receive anything.</p>
+
+    <h3>Analytics, ads, tracking &amp; Data safety</h3>
+    <p>The app contains <b>no analytics, no advertising, and no tracking SDKs</b>, and requests no advertising identifier. Consistent with this, our Google Play <b>Data safety</b> declaration is: <b>no data collected and no data shared</b>. Backups and exports you create are data <em>you</em> move yourself; they are not collected by us.</p>
+
+    <h3>Children</h3>
+    <p>The app is a general productivity tool and is not directed at children.</p>
+
+    <h3>Changes &amp; contact</h3>
+    <p>If data practices change, this page and the “Last updated” date will be updated. Questions about this policy: <b>piankecard@gmail.com</b> (片刻 Pianke).</p>
+
+    <!-- ============ 繁體中文 ============ -->
+    <h2>繁體中文</h2>
+
+    <h3>由誰提供</h3>
+    <p>片刻(Pianke)是一款名片掃描與聯絡人整理工具,完全離線運作。我們(開發者)不架設任何伺服器、也不會收到你的任何資料。因此本政策主要是說明:哪些資料留在<em>你的</em>裝置上,以及只有在<em>你</em>主動傳送時才會離開裝置的部分。</p>
+
+    <h3>App 儲存了什麼(僅存在你的裝置)</h3>
+    <ul>
+      <li>每張名片校正後的影像(原始擷取圖會被捨棄)。</li>
+      <li>辨識出的文字與解析後的欄位:姓名、公司、職稱、電話、Email、地址、網站與你的備註。</li>
+      <li>你新增的標籤,以及你為名片設定的跟進提醒時間(選用)。</li>
+      <li>你自己的「我的名片」內容,以及你為它挑選的大頭貼(選用)。</li>
+      <li>你的設定(電話格式的預設國別、外觀主題、是否開啟 App 鎖)。</li>
+    </ul>
+    <p>以上全部保存在 App 於你裝置上的私有儲存空間,絕不會傳送給我們或任何第三方。上架版本<b>未宣告網路權限</b>(已在最終合併後的 manifest 驗證),因此技術上無法建立任何網路連線或上傳任何東西。</p>
+
+    <h3>掃描:相機、文字辨識與 QR</h3>
+    <ul>
+      <li><b>相機</b> — 影像擷取由 <b>Google Play 服務的裝置端文件掃描器</b> 執行,擷取後回傳給 App 並僅儲存在你的裝置。App 本身不會在背景使用相機,也不會存取相簿(除非是你明確挑選的圖片 — 用於掃描,或作為你的「我的名片」大頭貼)。</li>
+      <li><b>文字辨識(OCR)</b> — 使用 Google <b>ML Kit 裝置端</b> 辨識器,在手機本機處理;影像與文字不會為了辨識而離開裝置。</li>
+      <li><b>QR / 條碼</b> — 若名片上帶有聯絡 QR,會在<b>裝置端</b>解碼(ZXing,純離線函式庫)以協助預填欄位,不使用網路。</li>
+    </ul>
+
+    <h3>分享與匯出(全部由你主動觸發)</h3>
+    <p>資訊離開 App 的唯一途徑,是當<b>你</b>選擇送出時 — 絕不會自動發生:</p>
+    <ul>
+      <li>透過 Android 分享面板,將名片匯出為標準 <code>.vcf</code>(vCard)或 <code>.csv</code> 檔給你選的目的地 App。</li>
+      <li>將名片存入手機的<b>通訊錄</b>:App 會開啟系統通訊錄並預先填入,由<b>你</b>確認儲存(不使用通訊錄權限)。</li>
+      <li>將名片影像匯出為 <b>PDF 或 JPEG</b> 到你選擇的位置。</li>
+      <li>將名片(含「我的名片」)顯示為 <b>QR 條碼</b> 供他人掃描 — 會刻意排除你的私人備註與標籤。</li>
+    </ul>
+    <p>資訊交給你所選的其他 App、或存到你選的位置後,其後續處理不在我們的控制範圍。</p>
+
+    <h3>備份與還原(本機,且僅在你要求時)</h3>
+    <ul>
+      <li>你可以匯出名片備份,日後再匯入。備份只在你點選「匯出」時建立,並交給你選擇的目的地(例如檔案、通訊軟體、你自己的雲端硬碟)。我們絕不會收到。</li>
+      <li>你可以為備份設定密碼:備份會在裝置端以 <b>AES-256-GCM</b> 加密,金鑰由你的密碼透過 PBKDF2(高迭代次數)導出。我們無法讀取或還原有密碼保護的備份 — 請妥善保管密碼。</li>
+      <li>系統/雲端自動備份已<b>停用</b>(<code>allowBackup=false</code>),因此你的名片資料不會在未經你操作下被悄悄複製到雲端備份。</li>
+    </ul>
+
+    <h3>跟進提醒</h3>
+    <p>若你為名片設定跟進提醒,App 會在該時間於你的裝置排定一則<b>本機通知</b>,並在重開機後重新排定尚未觸發的提醒。這完全在裝置端進行,不會透過網路傳送任何資料。</p>
+
+    <h3>App 鎖</h3>
+    <p>你可以選擇以裝置生物辨識(指紋/臉部)或螢幕鎖來開啟 App。這由 Android 系統提示處理 — <b>App 不會看到或儲存你的生物特徵資料</b>。開啟 App 鎖時,App 也會在多工切換畫面與截圖中隱藏內容。</p>
+
+    <h3>App 使用的權限</h3>
+    <div class="tablewrap">
+      <table class="perm">
+        <thead><tr><th>權限</th><th>用途</th></tr></thead>
+        <tbody>
+          <tr><td><code>POST_NOTIFICATIONS</code></td><td>顯示你設定的本機跟進提醒。不使用網路。</td></tr>
+          <tr><td><code>RECEIVE_BOOT_COMPLETED</code></td><td>手機重開機後重新排定你尚未觸發的提醒(鬧鐘在重開機時會被清除)。</td></tr>
+          <tr><td><code>USE_BIOMETRIC</code>、<code>USE_FINGERPRINT</code></td><td>選用的 App 鎖,透過 Android 系統提示。App 不會取得你的生物特徵資料。</td></tr>
+          <tr class="removed"><td><code>INTERNET</code>、<code>ACCESS_NETWORK_STATE</code></td><td><b>已移除。</b> 這些原是被某個 Google 函式庫間接帶入;我們明確移除,使上架版本無法使用網路。</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>資料保存與刪除</h3>
+    <ul>
+      <li>可隨時刪除單張已掃描名片。</li>
+      <li><b>設定 → 清除本地資料</b> 會刪除你已儲存的掃描名片與其影像,以及 App 留在快取中的任何明文檔案。你另存的「我的名片」個人檔案不受此影響。</li>
+      <li>解除安裝 App 會移除其在你裝置上的所有資料,包括你的「我的名片」與大頭貼。</li>
+    </ul>
+    <p>我們不保存任何資料,因為我們從未收到任何資料。</p>
+
+    <h3>分析、廣告、追蹤與資料安全</h3>
+    <p>本 App <b>不含任何分析、廣告或追蹤 SDK</b>,也不索取廣告識別碼。因此我們在 Google Play 的<b>資料安全</b>聲明為:<b>不收集任何資料、不分享任何資料</b>。你建立的備份與匯出檔,是由<em>你自己</em>搬移的資料,並非由我們收集。</p>
+
+    <h3>兒童</h3>
+    <p>本 App 為一般生產力工具,並非以兒童為對象。</p>
+
+    <h3>政策變更與聯絡</h3>
+    <p>若資料處理方式變動,本頁與「最後更新」日期將更新。有疑問請聯絡:<b>piankecard@gmail.com</b>(片刻 Pianke)。</p>
+
+    <footer>片刻 Pianke — 完全離線的名片掃描 · 資料留在你的手機。This page is the app's privacy policy for Google Play.</footer>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var pp = document.getElementById('pp'), btn = document.getElementById('pp-toggle');
+    btn.addEventListener('click', function () {
+      var dark = pp.dataset.theme === 'dark';
+      pp.dataset.theme = dark ? 'light' : 'dark';
+      btn.textContent = dark ? '深色 / Dark' : '淺色 / Light';
+    });
+  })();
+</script>
+</body>
+</html>
