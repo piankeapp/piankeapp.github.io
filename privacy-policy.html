@@ -9,19 +9,23 @@
   html, body { margin: 0; }
   * { box-sizing: border-box; }
   #pp {
-    --paper:#FAF9F5; --ink:#17201E; --muted:#5C6660; --line:#E5E1D6; --card:#FFFFFF;
-    --teal:#0A4F4A; --teal-d:#063633; --cyan:#6FF6FE; --cyan-soft:#E4FBFC;
+    --paper:#FAF9F5; --paper-2:#F0EEE7; --ink:#14201D; --muted:#5C6B66; --line:#E5E1D6; --card:#FFFEFB;
+    --teal:#0A4F4A; --ink-pine:#04302C; --teal-d:#063633; --cyan:#6FF6FE; --cyan-soft:#E4FBFC;
     --ui:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
     --mono:"SF Mono","JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
     background:var(--paper); color:var(--ink); font-family:var(--ui); line-height:1.65;
     min-height:100vh; padding:0 0 64px;
   }
-  #pp[data-theme="dark"]{ --paper:#0E1815; --ink:#E0E3DF; --muted:#8F9A94; --line:#223029; --card:#14201D; --teal:#4CD9E2; --teal-d:#6FF6FE; --cyan-soft:#0d2b2a; }
+  #pp[data-theme="dark"]{ --paper:#0D1C19; --paper-2:#0A1613; --ink:#E3EBE8; --muted:#93AAA4; --line:#22302B; --card:#14231F; --teal:#4CD9E2; --teal-d:#6FF6FE; --cyan-soft:#0D2B2A; }
   #pp .wrap{ max-width:760px; margin:0 auto; padding:0 clamp(18px,4vw,32px); }
-  #pp header.top{ background:var(--teal); color:#EAFFFE; padding:36px 0 30px; margin-bottom:8px; }
-  #pp .top .wrap{ display:flex; align-items:flex-end; justify-content:space-between; gap:16px; flex-wrap:wrap; }
-  #pp .mark{ font-size:30px; font-weight:700; letter-spacing:-.02em; }
-  #pp .mark small{ font-size:15px; font-weight:600; opacity:.85; margin-left:8px; }
+  /* 印身:seal-body gradient (松綠 Pine → 墨松 Ink Pine), fixed dark in both themes */
+  #pp header.top{ background:linear-gradient(135deg,#0E5B54 0%,#0A4F4A 45%,#04302C 100%); color:#EAFFFE; padding:30px 0 26px; margin-bottom:8px; }
+  #pp .top .wrap{ display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+  #pp .brandline{ display:flex; align-items:center; gap:13px; min-width:0; }
+  #pp .brandline .seal{ flex:none; width:46px; height:46px; filter:drop-shadow(0 6px 16px rgba(0,20,18,.4)); }
+  #pp .brandline .names{ display:flex; flex-direction:column; line-height:1.14; }
+  #pp .brandline .zh{ font-size:26px; font-weight:700; letter-spacing:.02em; }
+  #pp .brandline .en{ font-size:12px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; opacity:.82; }
   #pp .top p{ margin:6px 0 0; font-size:13px; opacity:.9; }
   #pp .toggle{ background:rgba(255,255,255,.15); color:#EAFFFE; border:1px solid rgba(255,255,255,.35); border-radius:999px; padding:7px 14px; font:inherit; font-size:12.5px; font-weight:600; cursor:pointer; }
   #pp .toggle:focus-visible{ outline:2px solid #EAFFFE; outline-offset:2px; }
@@ -34,7 +38,7 @@
   #pp ul{ margin:8px 0; padding-left:22px; }
   #pp li{ margin:5px 0; }
   #pp .lang{ font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
-  #pp code{ background:var(--card); border:1px solid var(--line); border-radius:5px; padding:1px 6px; font-family:var(--mono); font-size:.9em; }
+  #pp code{ background:var(--paper-2); border:1px solid var(--line); border-radius:5px; padding:1px 6px; font-family:var(--mono); font-size:.9em; }
   #pp .tablewrap{ overflow-x:auto; margin:12px 0; }
   #pp table.perm{ width:100%; border-collapse:collapse; font-size:13.5px; min-width:460px; }
   #pp table.perm th, #pp table.perm td{ text-align:left; padding:9px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
@@ -49,7 +53,30 @@
 <div id="pp" data-theme="light">
   <header class="top">
     <div class="wrap">
-      <div class="mark">片刻 <small>Pianke · Privacy Policy</small></div>
+      <div class="brandline">
+        <!-- 片印 seal mark (inline; matches design/brand/icon-composed.svg) -->
+        <svg class="seal" viewBox="0 0 72 72" role="img" aria-label="片刻 Pianke">
+          <defs>
+            <linearGradient id="sealg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#0E5B54"/><stop offset=".55" stop-color="#0A4F4A"/><stop offset="1" stop-color="#04302C"/>
+            </linearGradient>
+            <clipPath id="sq"><path d="M36,0 C7.2,0 0,7.2 0,36 C0,64.8 7.2,72 36,72 C64.8,72 72,64.8 72,36 C72,7.2 64.8,0 36,0 Z"/></clipPath>
+          </defs>
+          <g clip-path="url(#sq)">
+            <rect width="72" height="72" fill="url(#sealg)"/>
+            <path d="M36,0 C7.2,0 0,7.2 0,36 C0,64.8 7.2,72 36,72 C64.8,72 72,64.8 72,36 C72,7.2 64.8,0 36,0 Z" fill="none" stroke="#6FF6FE" stroke-opacity=".3" stroke-width="2"/>
+            <g transform="translate(-18 -18)" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="7.5">
+              <path d="M38 44.5 H65 V35" stroke="#6FF6FE"/>
+              <path d="M38 35 V71.5" stroke="#FAF9F5"/>
+              <path d="M38 58.5 H70 V73" stroke="#FAF9F5"/>
+            </g>
+          </g>
+        </svg>
+        <span class="names">
+          <span class="zh">片刻</span>
+          <span class="en">Pianke · Privacy Policy</span>
+        </span>
+      </div>
       <button class="toggle" id="pp-toggle" aria-label="切換淺色/深色">深色 / Dark</button>
     </div>
   </header>
