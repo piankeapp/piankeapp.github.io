@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>名片掃描 App 會把你的客戶名單傳到哪裡?三種你自己就能查的方法</title>
+<meta name="description" content="隱私政策是承諾,不是證據。這篇教你三個不用相信任何人說法、自己就能查的方法:看 Play 商店的權限清單、看資料安全申報、看 App 的實際數據用量。">
+<link rel="canonical" href="https://piankeapp.github.io/does-your-card-app-upload-your-contacts.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="名片掃描 App 會把你的客戶名單傳到哪裡?三種你自己就能查的方法">
+<meta property="og:description" content="隱私政策是承諾,不是證據。三個自己就能查的方法:權限清單、資料安全申報、實際數據用量。">
+<meta property="og:url" content="https://piankeapp.github.io/does-your-card-app-upload-your-contacts.html">
+<meta name="robots" content="index, follow">
+
+<style>
+  :root {
+    --paper: #faf9f5;
+    --paper-2: #f0eee7;
+    --panel: #fffefb;
+    --ink: #14201d;
+    --muted: #5c6b66;
+    --teal: #0a4f4a;
+    --cyan: #6ff6fe;
+    --on-cyan: #04312f;
+    --line: rgba(10, 79, 74, .14);
+    --line-strong: rgba(10, 79, 74, .28);
+    --warm: #8a5a12;
+    --warm-bg: rgba(214, 158, 46, .12);
+    --sans: "Segoe UI", system-ui, -apple-system, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    --mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
+    --maxw: 760px;
+  }
+  :root[data-theme="dark"] {
+    --paper: #0d1c19;
+    --paper-2: #0a1613;
+    --panel: #14231f;
+    --ink: #e3ebe8;
+    --muted: #93aaa4;
+    --teal: #4cd9e2;
+    --cyan: #6ff6fe;
+    --line: rgba(111, 246, 254, .13);
+    --line-strong: rgba(111, 246, 254, .28);
+    --warm: #e8c477;
+    --warm-bg: rgba(232, 196, 119, .10);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; font-family: var(--sans); color: var(--ink); background: var(--paper);
+    line-height: 1.75; -webkit-font-smoothing: antialiased;
+    transition: background .4s ease, color .4s ease;
+  }
+  .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+  .wrap.nav-row { max-width: 1160px; }
+  a { color: var(--teal); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  h1, h2, h3 { text-wrap: balance; letter-spacing: -.02em; line-height: 1.22; }
+  h1 { font-size: clamp(1.72rem, 4.4vw, 2.5rem); font-weight: 800; margin: 18px 0 0; line-height: 1.14; }
+  h2 { font-size: clamp(1.18rem, 2.4vw, 1.42rem); font-weight: 750; margin: 52px 0 14px; }
+  h3 { font-size: 1.02rem; font-weight: 700; margin: 26px 0 8px; }
+  p { margin: 16px 0; }
+  ul, ol { margin: 16px 0; padding-left: 1.35em; }
+  li { margin: 8px 0; }
+  strong { font-weight: 700; }
+  code { font-family: var(--mono); font-size: .88em; background: var(--paper-2); padding: 2px 6px; border-radius: 5px; }
+
+  .eyebrow { font-size: .74rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--teal); display: inline-flex; align-items: center; gap: 9px; }
+  .eyebrow::before { content: ""; width: 22px; height: 2px; background: var(--cyan); display: inline-block; }
+
+  .btn { display: inline-flex; align-items: center; gap: 9px; font: inherit; font-weight: 650; padding: 13px 22px; border-radius: 999px; border: 0; cursor: pointer; text-decoration: none; font-size: .98rem; transition: transform .15s ease, box-shadow .15s ease; }
+  .btn.primary { background: var(--teal); color: #fff; }
+  .btn.primary:hover { transform: translateY(-2px); box-shadow: 0 12px 24px -12px var(--teal); }
+  :root[data-theme="dark"] .btn.primary { background: var(--cyan); color: var(--on-cyan); }
+  .btn.ghost { background: transparent; color: var(--teal); border: 1px solid var(--line-strong); }
+  .btn.ghost:hover { border-color: var(--teal); }
+  .btn svg { width: 18px; height: 18px; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
+
+  nav { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--paper) 86%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+  nav .row { display: flex; align-items: center; justify-content: space-between; height: 66px; gap: 16px; }
+  .brand { display: flex; align-items: center; gap: 11px; font-weight: 750; font-size: 1.12rem; letter-spacing: -.01em; text-decoration: none; color: inherit; }
+  .logo { width: 34px; height: 34px; border-radius: 10px; flex: none; background: linear-gradient(150deg, #0a4f4a, #063633); display: grid; place-items: center; box-shadow: inset 0 0 0 1px rgba(255,255,255,.08); }
+  .logo span { width: 14px; height: 9px; border-radius: 2.5px; background: var(--cyan); box-shadow: 0 6px 0 -2px rgba(111,246,254,.5); }
+  .brand small { font-weight: 500; font-size: .74rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .tools { display: flex; align-items: center; gap: 8px; }
+  .toolbtn { font: inherit; font-size: .82rem; font-weight: 650; color: var(--teal); background: transparent; border: 1px solid var(--line-strong); border-radius: 999px; height: 36px; min-width: 36px; padding: 0; width: 36px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; transition: border-color .15s; }
+  .toolbtn:hover { border-color: var(--teal); }
+  .toolbtn svg { width: 18px; height: 18px; }
+  #themeBtn .sun { display: none; }
+  :root[data-theme="dark"] #themeBtn .sun { display: block; }
+  :root[data-theme="dark"] #themeBtn .moon { display: none; }
+
+  header.art { padding: clamp(32px, 6vw, 56px) 0 8px; border-bottom: 1px solid var(--line); background:
+      radial-gradient(620px 300px at 88% -30%, rgba(111,246,254,.16), transparent 60%); }
+  .meta { color: var(--muted); font-size: .86rem; margin: 20px 0 26px; }
+  .lead { font-size: 1.09rem; color: var(--muted); margin-top: 20px; }
+
+  .box { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 22px 24px; margin: 28px 0; }
+  .box.key { border-left: 4px solid var(--teal); }
+  :root[data-theme="dark"] .box.key { border-left-color: var(--cyan); }
+  .box.warn { background: var(--warm-bg); border-color: color-mix(in srgb, var(--warm) 34%, transparent); }
+  .box.warn strong { color: var(--warm); }
+  .box h3:first-child, .box p:first-child { margin-top: 0; }
+  .box > :last-child { margin-bottom: 0; }
+
+  ol.steps { list-style: none; padding: 0; counter-reset: s; }
+  ol.steps > li { counter-increment: s; position: relative; padding-left: 44px; margin: 18px 0; }
+  ol.steps > li::before {
+    content: counter(s); position: absolute; left: 0; top: 1px;
+    width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center;
+    background: var(--teal); color: #fff; font-size: .84rem; font-weight: 700;
+  }
+  :root[data-theme="dark"] ol.steps > li::before { background: var(--cyan); color: var(--on-cyan); }
+
+  .tablewrap { overflow-x: auto; margin: 24px 0; border: 1px solid var(--line); border-radius: 14px; background: var(--panel); }
+  table { border-collapse: collapse; width: 100%; min-width: 620px; font-size: .92rem; }
+  th, td { text-align: left; padding: 13px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-weight: 700; background: var(--paper-2); font-size: .85rem; }
+  tr:last-child td { border-bottom: 0; }
+
+  .cta { background: var(--panel); border: 1px solid var(--line-strong); border-radius: 20px; padding: 28px; margin: 44px 0 8px; }
+  .cta .row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
+  .note { color: var(--muted); font-size: .84rem; }
+
+  footer { border-top: 1px solid var(--line); margin-top: 56px; padding: 30px 0 44px; }
+  footer .links { display: flex; gap: 18px; flex-wrap: wrap; margin: 12px 0; font-size: .9rem; }
+  .fine { color: var(--muted); font-size: .8rem; line-height: 1.7; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-row row">
+    <a class="brand" href="index.html">
+      <span class="logo"><span></span></span>
+      片刻 Pianke<small>· 離線名片掃描</small>
+    </a>
+    <div class="tools">
+      <button class="toolbtn" id="themeBtn" aria-label="切換深色模式">
+        <svg class="moon" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A8 8 0 1 1 11.2 3a6.5 6.5 0 0 0 9.8 9.8z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6 19 19M19 5l-1.4 1.4M6.4 17.6 5 19"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<header class="art">
+  <div class="wrap">
+    <span class="eyebrow">自己查得到的事</span>
+    <h1>名片掃描 App 會把你的客戶名單傳到哪裡?<br>三種你自己就能查的方法</h1>
+    <p class="lead">隱私政策是承諾,不是證據。承諾可以改、可以違反,而你無法查證。下面三個方法不需要你相信任何人的說法——包括我們的——你自己就能看到答案。</p>
+    <div class="meta"><span>更新於 2026-08-04</span></div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="box key">
+    <h3>先搞清楚「政策」和「權限」的差別</h3>
+    <p><strong>隱私政策</strong>是一份文件,說「我們不會做什麼」。它可以在你不知情的時候改版,而且你沒有辦法驗證它有沒有被遵守。</p>
+    <p><strong>權限</strong>是作業系統層級的能力邊界。一個沒有網路權限的 App,不是「承諾不上傳」,而是<strong>系統不給它連線的能力</strong>。這個差別不是修辭,是可驗證與不可驗證的差別。</p>
+  </div>
+
+  <h2>為什麼名片資料特別值得你多花三分鐘</h2>
+  <p>名片不是你的個人資料,是<strong>別人的</strong>個人資料。上面有客戶的姓名、職稱、手機、公司信箱——那是他當面交給你、預期你收在自己抽屜裡的東西。</p>
+  <p>當你把它掃進一個會上傳雲端的 App,你其實是<em>代替他</em>決定了他的聯絡資料要交給哪一家公司保管,而他從來沒被問過。這件事在業務、保險、房仲、獵頭這些一週收幾十張名片的職業上,規模會累積得很快:你手上那份名單,可能是好幾百個人的聯絡方式。</p>
+  <p>所以這不只是「我在不在意自己的隱私」,而是「我有沒有替我的客戶盡到基本的保管責任」。</p>
+
+  <h2>方法一:看 Play 商店的權限清單(裝之前就能看,30 秒)</h2>
+  <p>這是最快也最實用的一招,而且<strong>不必先安裝</strong>:</p>
+
+  <ol class="steps">
+    <li>在 Google Play 打開那個 App 的頁面。</li>
+    <li>往下滑到<strong>「關於這個應用程式」</strong>區塊。</li>
+    <li>找到<strong>「應用程式權限」→ 點「查看更多」</strong>。</li>
+    <li>在清單裡找有沒有<strong>「完整網路存取權」</strong>(也可能顯示為「網路存取權」,對應的是 Android 的 <code>INTERNET</code> 權限)。</li>
+  </ol>
+
+  <h3>怎麼讀這個結果</h3>
+  <ul>
+    <li><strong>有網路權限,不代表它會上傳你的名片。</strong> 絕大多數 App 都申請這個權限,原因通常是廣告、崩潰回報、檢查更新、雲端同步。看到它不用緊張。</li>
+    <li><strong>但沒有網路權限,就代表它技術上不可能上傳。</strong> 這是一個很強的結論,因為它不依賴任何人的誠信。</li>
+    <li>順便看有沒有<strong>「聯絡人」權限</strong>。一個名片 App 若要讀取你手機裡<em>既有</em>的通訊錄,才需要這個;只是「把掃到的名片寫進通訊錄」通常用系統的新增聯絡人畫面就夠,不需要讀取權限。</li>
+  </ul>
+
+  <h2>方法二:看「資料安全」區塊(裝之前就能看,1 分鐘)</h2>
+  <p>同樣在 Play 的 App 頁面,往下找<strong>「資料安全」</strong>。這裡會列出:收集了哪些類型的資料、有沒有<strong>分享給第三方</strong>、傳輸有沒有加密、能不能要求刪除。</p>
+
+  <div class="box warn">
+    <p><strong>這一區的性質要理解清楚:它是開發者自行申報的,不是 Google 逐項稽核的結果。</strong>所以它的可信度低於方法一的權限清單。不過申報不實違反 Play 政策,可能導致下架,因此它仍有一定的約束力——把它當成「開發者的書面聲明」,而不是「經過驗證的事實」。</p>
+  </div>
+
+  <p>值得注意的一點:依 Google 的定義,<strong>只存在裝置上、從未傳出裝置的資料不算「收集」</strong>。所以一個完全離線的 App 在這一區會顯示「未收集任何資料」——這跟「它把資料收走但沒告訴你」是完全不同的兩件事,但畫面上看起來很像。要分辨,回去看方法一。</p>
+
+  <h2>方法三:看 App 的實際數據用量(裝了之後,最硬的證據)</h2>
+  <p>前兩個方法看的是「它<em>能不能</em>」和「它<em>說</em>它有沒有」。這個方法看的是<strong>它實際傳了多少</strong>。</p>
+
+  <ol class="steps">
+    <li>用那個 App 正常掃幾張名片,讓它跑一段時間(至少幾天)。</li>
+    <li>打開手機的<strong>設定 → 應用程式</strong>,找到那個 App。</li>
+    <li>進去找<strong>「行動數據和 Wi-Fi」</strong>或<strong>「數據用量」</strong>(各廠牌名稱不同:Samsung、小米、OPPO 的路徑都略有差異,也可以從「設定 → 網路」那一側進去找「應用程式數據用量」)。</li>
+    <li>看它累積傳送/接收了多少。<strong>一個真正離線的 App,這個數字應該是 0 或接近 0。</strong></li>
+  </ol>
+
+  <p>這招的價值在於它是<strong>事後的實測</strong>,不是宣稱。缺點是要等一段時間才有意義,而且如果 App 有網路權限,你看到有流量也無法判斷傳的是廣告還是你的名片。</p>
+
+  <h2>三種方法怎麼取捨</h2>
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr><th style="min-width:140px">方法</th><th style="min-width:110px">要多久</th><th>能證明什麼</th><th>可信度</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>權限清單</strong></td>
+          <td>30 秒<br><small>裝之前</small></td>
+          <td>它<strong>有沒有能力</strong>上傳。沒有網路權限=技術上不可能</td>
+          <td><strong>最高</strong>。系統層級事實,不靠開發者誠信</td>
+        </tr>
+        <tr>
+          <td><strong>資料安全申報</strong></td>
+          <td>1 分鐘<br><small>裝之前</small></td>
+          <td>開發者<strong>聲明</strong>收集與分享了什麼</td>
+          <td>中。自行申報,但不實申報違反政策</td>
+        </tr>
+        <tr>
+          <td><strong>實際數據用量</strong></td>
+          <td>幾天<br><small>裝之後</small></td>
+          <td>它<strong>實際傳了多少</strong>資料出去</td>
+          <td>高,但需要時間,且有流量時難以判斷內容</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p><strong>實務建議</strong>:裝之前先用方法一篩掉一輪(30 秒的事),裝了之後過幾天用方法三複查一次。方法二當補充參考。</p>
+
+  <h2>拿片刻當練習對象</h2>
+  <p>最後一段是我們的自我揭露,而你剛好可以拿它當方法一的練習:</p>
+  <p>片刻 Pianke 的權限清單裡<strong>沒有「完整網路存取權」,也沒有相機權限</strong>,只有通知權限。你不用信這句話——照方法一的四個步驟去 Play 頁面看一次就知道。</p>
+  <p>需要誠實補充的一點:片刻取像是<strong>交給 Google Play 服務的文件掃描器</strong>處理的,那是系統元件,所以我們自己的 App 不需要相機權限。OCR 與欄位解析都在你的裝置上跑。這是為什麼一個「掃名片的 App」可以連相機權限都不要。</p>
+
+  <div class="cta">
+    <h3 style="margin-top:0">片刻 Pianke:沒有網路權限的名片掃描器</h3>
+    <p style="margin-bottom:0">掃描、辨識、整理、匯出,全部在你的手機裡完成。不用註冊帳號,沒有雲端,沒有訂閱,沒有廣告,沒有追蹤。免費版可存 15 張,Pro 一次買斷。</p>
+    <div class="row">
+      <a class="btn primary" href="https://play.google.com/store/apps/details?id=com.pianke.cardscanner&amp;referrer=utm_source%3Dsite-02%26utm_medium%3Darticle%26utm_campaign%3Dverify-permissions">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5V3.5a1 1 0 0 1 1.5-.87l14.5 8.5a1 1 0 0 1 0 1.74l-14.5 8.5A1 1 0 0 1 3 20.5z"/></svg>
+        去 Play 看它的權限清單
+      </a>
+      <a class="btn ghost" href="camcard-alternatives-no-subscription.html">不用訂閱的替代方案</a>
+    </div>
+    <p class="note" style="margin-bottom:0">Android 8.0 以上 · 免費下載 · Pro 一次買斷、不訂閱</p>
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="brand" style="font-size:1rem"><span class="logo"><span></span></span>片刻 Pianke</div>
+    <div class="links">
+      <a href="index.html">產品介紹</a>
+      <a href="camcard-alternatives-no-subscription.html">選 App 指南</a>
+      <a href="privacy-policy.html">隱私權政策</a>
+      <a href="https://play.google.com/store/apps/details?id=com.pianke.cardscanner&amp;referrer=utm_source%3Dsite-02%26utm_medium%3Darticle-footer">Google Play</a>
+    </div>
+    <p class="fine">
+      <strong>揭露:</strong>本文由片刻 Pianke 開發團隊撰寫,文末提及本團隊開發的 App。文中的檢查方法對任何 App 都適用,包括我們自己的。<br>
+      <strong>說明:</strong>Play 商店的「應用程式權限」與「資料安全」兩區的版面與名稱可能隨 Google 改版而變動;各手機廠牌的數據用量設定路徑也不相同,文中以通用路徑描述。<br>
+      <strong>商標:</strong>Google Play 與 Android 為 Google LLC 之商標。本文僅為說明之引用,與 Google 無關聯、未經其背書。<br>
+      © 2026 片刻 Pianke
+    </p>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "名片掃描 App 會把你的客戶名單傳到哪裡?三種你自己就能查的方法",
+  "description": "隱私政策是承諾,不是證據。三個自己就能查的方法:Play 商店的權限清單、資料安全申報、App 的實際數據用量。",
+  "datePublished": "2026-08-04",
+  "dateModified": "2026-08-04",
+  "inLanguage": "zh-Hant-TW",
+  "mainEntityOfPage": "https://piankeapp.github.io/does-your-card-app-upload-your-contacts.html",
+  "author": { "@type": "Organization", "name": "片刻 Pianke" },
+  "publisher": { "@type": "Organization", "name": "片刻 Pianke" }
+}
+</script>
+
+<script>
+  const root = document.documentElement;
+  const themeBtn = document.getElementById("themeBtn");
+  themeBtn.addEventListener("click", () => {
+    root.dataset.theme = (root.dataset.theme === "dark") ? "light" : "dark";
+  });
+</script>
+
+</body>
+</html>
