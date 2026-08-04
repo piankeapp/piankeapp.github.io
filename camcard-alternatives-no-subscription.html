@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>名片全能王(CamCard)開始收訂閱費?2026 不用訂閱的名片掃描替代方案</title>
+<meta name="description" content="名片 App 一個個轉向訂閱制。這篇整理不用訂閱的名片掃描替代方案、換 App 前該問的三個問題,以及怎麼在 Play 商店自己驗證一個 App 會不會把你的名片上傳。">
+<link rel="canonical" href="https://piankeapp.github.io/camcard-alternatives-no-subscription.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="名片全能王(CamCard)開始收訂閱費?2026 不用訂閱的名片掃描替代方案">
+<meta property="og:description" content="不用訂閱的名片掃描替代方案、換 App 前該問的三個問題,以及怎麼自己驗證一個 App 會不會上傳你的名片。">
+<meta property="og:url" content="https://piankeapp.github.io/camcard-alternatives-no-subscription.html">
+<meta name="robots" content="index, follow">
+
+<style>
+  :root {
+    --paper: #faf9f5;
+    --paper-2: #f0eee7;
+    --panel: #fffefb;
+    --ink: #14201d;
+    --muted: #5c6b66;
+    --teal: #0a4f4a;
+    --cyan: #6ff6fe;
+    --on-cyan: #04312f;
+    --line: rgba(10, 79, 74, .14);
+    --line-strong: rgba(10, 79, 74, .28);
+    --warm: #8a5a12;
+    --warm-bg: rgba(214, 158, 46, .12);
+    --sans: "Segoe UI", system-ui, -apple-system, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    --maxw: 760px;
+  }
+  :root[data-theme="dark"] {
+    --paper: #0d1c19;
+    --paper-2: #0a1613;
+    --panel: #14231f;
+    --ink: #e3ebe8;
+    --muted: #93aaa4;
+    --teal: #4cd9e2;
+    --cyan: #6ff6fe;
+    --line: rgba(111, 246, 254, .13);
+    --line-strong: rgba(111, 246, 254, .28);
+    --warm: #e8c477;
+    --warm-bg: rgba(232, 196, 119, .10);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; font-family: var(--sans); color: var(--ink); background: var(--paper);
+    line-height: 1.75; -webkit-font-smoothing: antialiased;
+    transition: background .4s ease, color .4s ease;
+  }
+  .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+  .wrap.nav-row { max-width: 1160px; }
+  a { color: var(--teal); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  h1, h2, h3 { text-wrap: balance; letter-spacing: -.02em; line-height: 1.22; }
+  h1 { font-size: clamp(1.72rem, 4.4vw, 2.5rem); font-weight: 800; margin: 18px 0 0; line-height: 1.14; }
+  h2 { font-size: clamp(1.18rem, 2.4vw, 1.42rem); font-weight: 750; margin: 52px 0 14px; }
+  h3 { font-size: 1.02rem; font-weight: 700; margin: 26px 0 8px; }
+  p { margin: 16px 0; }
+  ul, ol { margin: 16px 0; padding-left: 1.35em; }
+  li { margin: 8px 0; }
+  strong { font-weight: 700; }
+
+  .eyebrow { font-size: .74rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--teal); display: inline-flex; align-items: center; gap: 9px; }
+  .eyebrow::before { content: ""; width: 22px; height: 2px; background: var(--cyan); display: inline-block; }
+
+  .btn { display: inline-flex; align-items: center; gap: 9px; font: inherit; font-weight: 650; padding: 13px 22px; border-radius: 999px; border: 0; cursor: pointer; text-decoration: none; font-size: .98rem; transition: transform .15s ease, box-shadow .15s ease; }
+  .btn.primary { background: var(--teal); color: #fff; }
+  .btn.primary:hover { transform: translateY(-2px); box-shadow: 0 12px 24px -12px var(--teal); }
+  :root[data-theme="dark"] .btn.primary { background: var(--cyan); color: var(--on-cyan); }
+  .btn.ghost { background: transparent; color: var(--teal); border: 1px solid var(--line-strong); }
+  .btn.ghost:hover { border-color: var(--teal); }
+  .btn svg { width: 18px; height: 18px; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
+
+  /* nav — mirrors the landing page */
+  nav { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--paper) 86%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+  nav .row { display: flex; align-items: center; justify-content: space-between; height: 66px; gap: 16px; }
+  .brand { display: flex; align-items: center; gap: 11px; font-weight: 750; font-size: 1.12rem; letter-spacing: -.01em; text-decoration: none; color: inherit; }
+  .logo { width: 34px; height: 34px; border-radius: 10px; flex: none; background: linear-gradient(150deg, #0a4f4a, #063633); display: grid; place-items: center; box-shadow: inset 0 0 0 1px rgba(255,255,255,.08); }
+  .logo span { width: 14px; height: 9px; border-radius: 2.5px; background: var(--cyan); box-shadow: 0 6px 0 -2px rgba(111,246,254,.5); }
+  .brand small { font-weight: 500; font-size: .74rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .tools { display: flex; align-items: center; gap: 8px; }
+  .toolbtn { font: inherit; font-size: .82rem; font-weight: 650; color: var(--teal); background: transparent; border: 1px solid var(--line-strong); border-radius: 999px; height: 36px; min-width: 36px; padding: 0; width: 36px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; transition: border-color .15s; }
+  .toolbtn:hover { border-color: var(--teal); }
+  .toolbtn svg { width: 18px; height: 18px; }
+  #themeBtn .sun { display: none; }
+  :root[data-theme="dark"] #themeBtn .sun { display: block; }
+  :root[data-theme="dark"] #themeBtn .moon { display: none; }
+
+  /* article head */
+  header.art { padding: clamp(32px, 6vw, 56px) 0 8px; border-bottom: 1px solid var(--line); background:
+      radial-gradient(620px 300px at 88% -30%, rgba(111,246,254,.16), transparent 60%); }
+  .meta { color: var(--muted); font-size: .86rem; margin: 20px 0 26px; display: flex; flex-wrap: wrap; gap: 6px 16px; }
+  .lead { font-size: 1.09rem; color: var(--muted); margin-top: 20px; }
+
+  /* callouts */
+  .box { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 22px 24px; margin: 28px 0; }
+  .box.key { border-left: 4px solid var(--teal); }
+  :root[data-theme="dark"] .box.key { border-left-color: var(--cyan); }
+  .box.warn { background: var(--warm-bg); border-color: color-mix(in srgb, var(--warm) 34%, transparent); }
+  .box.warn strong { color: var(--warm); }
+  .box h3:first-child, .box p:first-child { margin-top: 0; }
+  .box > :last-child { margin-bottom: 0; }
+
+  /* steps */
+  ol.steps { list-style: none; padding: 0; counter-reset: s; }
+  ol.steps > li { counter-increment: s; position: relative; padding-left: 44px; margin: 18px 0; }
+  ol.steps > li::before {
+    content: counter(s); position: absolute; left: 0; top: 1px;
+    width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center;
+    background: var(--teal); color: #fff; font-size: .84rem; font-weight: 700;
+  }
+  :root[data-theme="dark"] ol.steps > li::before { background: var(--cyan); color: var(--on-cyan); }
+
+  /* table */
+  .tablewrap { overflow-x: auto; margin: 24px 0; border: 1px solid var(--line); border-radius: 14px; background: var(--panel); }
+  table { border-collapse: collapse; width: 100%; min-width: 620px; font-size: .92rem; }
+  th, td { text-align: left; padding: 13px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-weight: 700; background: var(--paper-2); font-size: .85rem; letter-spacing: .01em; }
+  tr:last-child td { border-bottom: 0; }
+  td small { color: var(--muted); }
+
+  .cta { background: var(--panel); border: 1px solid var(--line-strong); border-radius: 20px; padding: 28px; margin: 44px 0 8px; }
+  .cta .row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
+  .note { color: var(--muted); font-size: .84rem; }
+
+  footer { border-top: 1px solid var(--line); margin-top: 56px; padding: 30px 0 44px; }
+  footer .links { display: flex; gap: 18px; flex-wrap: wrap; margin: 12px 0; font-size: .9rem; }
+  .fine { color: var(--muted); font-size: .8rem; line-height: 1.7; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-row row">
+    <a class="brand" href="index.html">
+      <span class="logo"><span></span></span>
+      片刻 Pianke<small>· 離線名片掃描</small>
+    </a>
+    <div class="tools">
+      <button class="toolbtn" id="themeBtn" aria-label="切換深色模式">
+        <svg class="moon" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A8 8 0 1 1 11.2 3a6.5 6.5 0 0 0 9.8 9.8z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6 19 19M19 5l-1.4 1.4M6.4 17.6 5 19"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<header class="art">
+  <div class="wrap">
+    <span class="eyebrow">選 App 指南</span>
+    <h1>名片全能王(CamCard)開始收訂閱費?<br>2026 不用訂閱的名片掃描替代方案</h1>
+    <p class="lead">如果你是因為「原本能用的功能突然要月費」才搜到這篇,先看結論——如果你只是要把名片存進手機聯絡人,不一定需要付訂閱;但換 App 前先確認一件事:舊名片能不能完整匯出。</p>
+    <div class="meta">
+      <span>更新於 2026-08-04</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="box key">
+    <h3>三句話結論</h3>
+    <ul>
+      <li>你只是要<strong>把名片變成手機聯絡人</strong> → 不需要訂閱,有一次買斷甚至免費的做法。</li>
+      <li>你需要<strong>多台裝置即時同步、團隊共用同一份名單</strong> → 訂閱制才是對的工具,不要為了省錢硬換。</li>
+      <li>不管你換不換,<strong>現在就先把舊 App 的名片匯出成 vCard 或 CSV</strong>。這一步不做,以後你就是被綁住的那個人。</li>
+    </ul>
+  </div>
+
+  <h2>為什麼名片 App 一個個改成訂閱制</h2>
+  <p>這不一定是廠商突然變壞,而是雲端服務的成本是持續的。只要一個 App 提供<strong>雲端同步</strong>,它就得長期負擔伺服器、帳號系統與雲端辨識的費用——這些是每個月都在燒的錢。走雲端路線的產品,因此容易走向月費或年費。</p>
+  <p>真正該問的不是「他們憑什麼收訂閱」,而是:<strong>你真的有用到雲端功能嗎?</strong> 如果你只有一支手機,需求只是「把桌上這疊名片變成通訊錄裡的聯絡人」,這件事在手機本機就能完成,未必需要為跨裝置即時同步付月費。</p>
+
+  <h2>換 App 之前,先問自己三個問題</h2>
+
+  <h3>1. 我真的需要雲端同步嗎?</h3>
+  <p>如果你只用一支手機、名片最後都會匯進 Android 聯絡人(而聯絡人本身已經有 Google 帳號同步),那名片 App 自己的雲端對你幾乎沒有增益,只是多一個要信任的地方。</p>
+
+  <h3>2. 我的名片能不能帶走?</h3>
+  <p>打開你現在用的 App,找「匯出 / Export / 備份」,看它能不能給你 <strong>vCard(.vcf)或 CSV</strong> 檔。<strong>不能匯出的 App 不要繼續用</strong>——想換的時候走不了,只能繼續付。</p>
+
+  <h3>3. 我總共會付幾次錢?</h3>
+  <p>訂閱的真實成本是「月費 × 你預計會用幾年」。名片整理常常是<em>偶爾才做</em>的事(換工作、跑一場展、參加一次商會),但訂閱是<strong>每個月都在扣</strong>。把兩三年的總額算出來,再跟一次買斷的價格比,答案通常很清楚。</p>
+
+  <h2>不用訂閱的替代方案</h2>
+  <p>以下依「你是哪種人」整理,包含我們自己開發的 App(揭露:本站是片刻 Pianke 的開發者,下表對自己的限制也照實寫)。</p>
+
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr><th style="min-width:150px">方案</th><th style="min-width:130px">費用模式</th><th>適合誰</th><th>不適合誰</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>片刻 Pianke</strong><br><small>Android · 完全離線</small></td>
+          <td>免費版 15 張<br>Pro 一次買斷<br><small>目前創始價 NT$290</small></td>
+          <td>只用一支 Android 手機、希望客戶名單留在手機本機、討厭訂閱的人。中/英/日/韓與簡繁中文名片都在手機本機辨識。</td>
+          <td>需要雲端同步、團隊共用、iPhone、或 CRM 整合的人——這些我們都沒有,而且不打算做。</td>
+        </tr>
+        <tr>
+          <td><strong>蒙恬名片王 Mobile</strong><br><small>WorldCard · 台灣老牌</small></td>
+          <td>付費下載買斷<br><small>非訂閱;金額以 Play 商店顯示為準</small></td>
+          <td>想要買斷、習慣既有品牌的人。另有功能受限的免費版。</td>
+          <td>在意近期使用者評論的人;建議先查看最新評論再決定。</td>
+        </tr>
+        <tr>
+          <td><strong>Google Lens / 相機 + 手動建立聯絡人</strong></td>
+          <td>免費</td>
+          <td>一個月只收幾張名片、不需要「名片庫」概念的人。辨識文字後手動貼進聯絡人。</td>
+          <td>要搜尋、分組、公司歸戶、跟進備註、批次處理的人——它不是名片管理工具。</td>
+        </tr>
+        <tr>
+          <td><strong>純手動輸入</strong></td>
+          <td>免費</td>
+          <td>名片量極少、或資料極度敏感、不想裝任何 App 的人。</td>
+          <td>一場展就收 50 張的人。名片一多,手動輸入會很花時間。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="box warn">
+    <p><strong>反過來說,這些情況你該繼續付訂閱:</strong>需要手機/平板/電腦即時同步;團隊要共用同一份客戶名單並控管權限;名片要自動推進 Salesforce、HubSpot 這類 CRM;或你是 iPhone 使用者(片刻只有 Android)。這些需求是雲端服務真正在賣的東西,硬省會更貴。</p>
+  </div>
+
+  <h2>怎麼自己驗證一個名片 App 會不會上傳你的名片</h2>
+  <p>下面的方法可以讓你自己檢查,<strong>不必只聽任何一方的說法</strong>,包括我們的:</p>
+
+  <ol class="steps">
+    <li>在 Google Play 打開那個 App 的頁面。</li>
+    <li>往下拉到<strong>「關於這個應用程式」</strong>區塊。</li>
+    <li>找到<strong>「應用程式權限 → 查看更多」</strong>。</li>
+    <li>看清單裡有沒有<strong>「網路存取權 / 完整網路存取權」(INTERNET)</strong>。</li>
+  </ol>
+
+  <p>怎麼讀這個結果:</p>
+  <ul>
+    <li>有網路權限 <strong>不代表</strong>它一定上傳你的名片——絕大多數 App 都需要網路做別的事。</li>
+    <li>但<strong>沒有網路權限,就代表技術上不可能上傳</strong>。Android 系統層面就不給它連線的能力,這跟隱私政策裡寫什麼無關。</li>
+  </ul>
+  <p>這項檢查不必靠信任,你自己就能看到結果。以片刻為例,它的權限清單只有通知權限:<strong>沒有網路存取權,也沒有相機權限</strong>(掃描是交給 Google Play 服務的文件掃描器處理)。你可以照上面四步自己確認,不用信我們寫的任何一句話。</p>
+
+  <h2>搬家:把舊 App 的名片帶出來</h2>
+  <ol class="steps">
+    <li>在舊 App 找「匯出 / Export / 備份」,優先選 <strong>vCard(.vcf)</strong>,其次 CSV。</li>
+    <li>把檔案存到手機或雲端硬碟,<strong>打開來確認筆數對、欄位沒亂碼</strong>。這步很多人跳過,結果搬到一半才發現檔案是壞的。</li>
+    <li>匯入新 App,或直接匯入 Android 聯絡人(聯絡人 App → 設定 → 匯入)。</li>
+    <li><strong>確認新的地方真的有資料了,才移除舊 App。</strong>順序不要顛倒——先刪 App 再發現匯出檔有問題,就真的沒了。</li>
+  </ol>
+
+  <div class="cta">
+    <h3 style="margin-top:0">片刻 Pianke:沒有網路權限的名片掃描器</h3>
+    <p style="margin-bottom:0">掃描、辨識、整理、匯出,全部在你的手機裡完成。不用註冊帳號,沒有雲端,沒有訂閱,沒有廣告,沒有追蹤。免費版可存 15 張,Pro 一次買斷。</p>
+    <div class="row">
+      <a class="btn primary" href="https://play.google.com/store/apps/details?id=com.pianke.cardscanner&amp;referrer=utm_source%3Dsite-01%26utm_medium%3Darticle%26utm_campaign%3Dcamcard-alt">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5V3.5a1 1 0 0 1 1.5-.87l14.5 8.5a1 1 0 0 1 0 1.74l-14.5 8.5A1 1 0 0 1 3 20.5z"/></svg>
+        Google Play 取得
+      </a>
+      <a class="btn ghost" href="index.html">看產品介紹</a>
+    </div>
+    <p class="note" style="margin-bottom:0">Android 8.0 以上 · 免費下載 · Pro 一次買斷、不訂閱</p>
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="brand" style="font-size:1rem"><span class="logo"><span></span></span>片刻 Pianke</div>
+    <div class="links">
+      <a href="index.html">產品介紹</a>
+      <a href="privacy-policy.html">隱私權政策</a>
+      <a href="https://play.google.com/store/apps/details?id=com.pianke.cardscanner&amp;referrer=utm_source%3Dsite-01%26utm_medium%3Darticle-footer">Google Play</a>
+    </div>
+    <p class="fine">
+      <strong>揭露:</strong>本文由片刻 Pianke 開發團隊撰寫,文中提及本團隊開發的 App。表格中對自身限制的描述與對其他方案的描述採同一標準。<br>
+      <strong>資料查核:</strong>第三方方案的<em>收費模式</em>於 2026-08-04 核對。各家實際金額隨地區與時間調整,本文刻意不列出第三方的具體金額,請以 Google Play 或各產品官方頁面顯示者為準。本文不代表對任何第三方產品的評價結論,請自行查看最新使用者評論。<br>
+      <strong>商標:</strong>CamCard / 名片全能王為 Intsig Information 之商標,WorldCard / 蒙恬名片王為蒙恬科技(PenPower Technology)之商標,Google Play 與 Google Lens 為 Google LLC 之商標。本文僅為比較說明之引用,與上述公司均無關聯、未經其背書。<br>
+      © 2026 片刻 Pianke
+    </p>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "名片全能王(CamCard)開始收訂閱費?2026 不用訂閱的名片掃描替代方案",
+  "description": "不用訂閱的名片掃描替代方案、換 App 前該問的三個問題,以及怎麼在 Play 商店自己驗證一個 App 會不會把你的名片上傳。",
+  "datePublished": "2026-08-04",
+  "dateModified": "2026-08-04",
+  "inLanguage": "zh-Hant-TW",
+  "mainEntityOfPage": "https://piankeapp.github.io/camcard-alternatives-no-subscription.html",
+  "author": { "@type": "Organization", "name": "片刻 Pianke" },
+  "publisher": { "@type": "Organization", "name": "片刻 Pianke" }
+}
+</script>
+
+<script>
+  const root = document.documentElement;
+  const themeBtn = document.getElementById("themeBtn");
+  themeBtn.addEventListener("click", () => {
+    root.dataset.theme = (root.dataset.theme === "dark") ? "light" : "dark";
+  });
+</script>
+
+</body>
+</html>
