@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>片刻 Pianke · 支援 Support</title>
+<meta name="description" content="片刻 Pianke 的支援頁:聯絡方式、常見問題、以及如何回報問題。Support for 片刻 Pianke, the fully-offline business-card scanner.">
+<style>
+  html, body { margin: 0; }
+  * { box-sizing: border-box; }
+  #pp {
+    --paper:#FAF9F5; --paper-2:#F0EEE7; --ink:#14201D; --muted:#5C6B66; --line:#E5E1D6; --card:#FFFEFB;
+    --teal:#0A4F4A; --ink-pine:#04302C; --teal-d:#063633; --cyan:#6FF6FE; --cyan-soft:#E4FBFC;
+    --ui:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    --mono:"SF Mono","JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+    background:var(--paper); color:var(--ink); font-family:var(--ui); line-height:1.65;
+    min-height:100vh; padding:0 0 64px;
+  }
+  #pp[data-theme="dark"]{ --paper:#0D1C19; --paper-2:#0A1613; --ink:#E3EBE8; --muted:#93AAA4; --line:#22302B; --card:#14231F; --teal:#4CD9E2; --teal-d:#6FF6FE; --cyan-soft:#0D2B2A; }
+  #pp .wrap{ max-width:760px; margin:0 auto; padding:0 clamp(18px,4vw,32px); }
+  /* 印身:seal-body gradient (松綠 Pine → 墨松 Ink Pine), fixed dark in both themes */
+  #pp header.top{ background:linear-gradient(135deg,#0E5B54 0%,#0A4F4A 45%,#04302C 100%); color:#EAFFFE; padding:30px 0 26px; margin-bottom:8px; }
+  #pp .top .wrap{ display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+  #pp .brandline{ display:flex; align-items:center; gap:13px; min-width:0; }
+  #pp .brandline .seal{ flex:none; width:46px; height:46px; filter:drop-shadow(0 6px 16px rgba(0,20,18,.4)); }
+  #pp .brandline .names{ display:flex; flex-direction:column; line-height:1.14; }
+  #pp .brandline .zh{ font-size:26px; font-weight:700; letter-spacing:.02em; }
+  #pp .brandline .en{ font-size:12px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; opacity:.82; }
+  #pp .top p{ margin:6px 0 0; font-size:13px; opacity:.9; }
+  #pp .toggle{ background:rgba(255,255,255,.15); color:#EAFFFE; border:1px solid rgba(255,255,255,.35); border-radius:999px; padding:7px 14px; font:inherit; font-size:12.5px; font-weight:600; cursor:pointer; }
+  #pp .toggle:focus-visible{ outline:2px solid #EAFFFE; outline-offset:2px; }
+  #pp .updated{ font-family:var(--mono); font-size:12px; color:var(--muted); margin:18px 0 2px; }
+  #pp .callout{ background:var(--cyan-soft); border:1px solid var(--line); border-left:4px solid var(--teal); border-radius:12px; padding:14px 16px; margin:14px 0 26px; font-size:15px; }
+  #pp .callout b{ color:var(--teal-d); }
+  #pp h2{ font-size:15px; letter-spacing:.06em; text-transform:uppercase; color:var(--teal); margin:34px 0 14px; padding-bottom:8px; border-bottom:1px solid var(--line); }
+  #pp h3{ font-size:16px; margin:20px 0 6px; }
+  #pp p{ margin:8px 0; }
+  #pp ul{ margin:8px 0; padding-left:22px; }
+  #pp li{ margin:5px 0; }
+  #pp .lang{ font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+  #pp code{ background:var(--paper-2); border:1px solid var(--line); border-radius:5px; padding:1px 6px; font-family:var(--mono); font-size:.9em; }
+  #pp .tablewrap{ overflow-x:auto; margin:12px 0; }
+  #pp table.perm{ width:100%; border-collapse:collapse; font-size:13.5px; min-width:460px; }
+  #pp table.perm th, #pp table.perm td{ text-align:left; padding:9px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  #pp table.perm th{ font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); font-weight:600; }
+  #pp table.perm td code{ white-space:nowrap; }
+  #pp table.perm tr.removed td{ color:var(--muted); }
+  #pp footer{ margin-top:40px; padding-top:18px; border-top:1px solid var(--line); font-size:12.5px; color:var(--muted); }
+  #pp table{ width:100%; border-collapse:collapse; margin:12px 0; font-size:14.5px; }
+  #pp th, #pp td{ border:1px solid var(--line); padding:8px 10px; text-align:left; vertical-align:top; }
+  #pp th{ background:var(--paper-2); font-weight:600; }
+</style>
+</head>
+<body>
+
+<div id="pp" data-theme="light">
+  <header class="top">
+    <div class="wrap">
+      <div class="brandline">
+        <!-- 片印 seal mark (inline; matches design/brand/icon-composed.svg) -->
+        <svg class="seal" viewBox="0 0 72 72" role="img" aria-label="片刻 Pianke">
+          <defs>
+            <linearGradient id="sealg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#0E5B54"/><stop offset=".55" stop-color="#0A4F4A"/><stop offset="1" stop-color="#04302C"/>
+            </linearGradient>
+            <clipPath id="sq"><path d="M36,0 C7.2,0 0,7.2 0,36 C0,64.8 7.2,72 36,72 C64.8,72 72,64.8 72,36 C72,7.2 64.8,0 36,0 Z"/></clipPath>
+          </defs>
+          <g clip-path="url(#sq)">
+            <rect width="72" height="72" fill="url(#sealg)"/>
+            <path d="M36,0 C7.2,0 0,7.2 0,36 C0,64.8 7.2,72 36,72 C64.8,72 72,64.8 72,36 C72,7.2 64.8,0 36,0 Z" fill="none" stroke="#6FF6FE" stroke-opacity=".3" stroke-width="2"/>
+            <g transform="translate(-18 -18)" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="7.5">
+              <path d="M38 44.5 H65 V35" stroke="#6FF6FE"/>
+              <path d="M38 35 V71.5" stroke="#FAF9F5"/>
+              <path d="M38 58.5 H70 V73" stroke="#FAF9F5"/>
+            </g>
+          </g>
+        </svg>
+        <span class="names">
+          <span class="zh">片刻</span>
+          <span class="en">Pianke · Support</span>
+        </span>
+      </div>
+      <button class="toggle" id="pp-toggle" aria-label="切換淺色/深色">深色 / Dark</button>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="updated">Last updated / 最後更新:2026-09-18</div>
+    <div class="callout"><b>Support is one person and one address: piankecard@gmail.com.</b> Write in English or 繁體中文.
+    There is no account to recover and no server-side data, so anything that can be fixed is fixed in the app. —
+    <b>支援窗口就是一個人、一個信箱:piankecard@gmail.com,中英文皆可。</b>沒有帳號可以救援,也沒有任何存在伺服器上的資料,所以能修的問題都在 App 裡修。</div>
+
+    <h2>English</h2>
+
+    <h3>Contact</h3>
+    <p><b>piankecard@gmail.com</b> — 片刻 Pianke. Please include your device model and iOS version; if it is
+    about a card that was read wrongly, a photo of the card helps enormously, and you are of course free to
+    black out anything you do not want to share.</p>
+
+    <h3>Before you write: the three things that come up most</h3>
+    <ul>
+      <li><b>A field came out wrong, or empty.</b> Tap the field in the review screen, then tap the text on the
+      photo of the card — the app fills that field from what you tapped. Recognition is done on your device and
+      is not perfect, especially on glossy cards, unusual layouts, or a photo taken at an angle.</li>
+      <li><b>I bought Pro and it is not showing.</b> Open the upgrade screen and tap <b>Restore purchases</b>.
+      Purchases are tied to your Apple Account, so the same purchase works on your other devices signed in with
+      the same account. If it still does not appear, write in — do not buy it again.</li>
+      <li><b>Where are my cards stored, and how do I move them to a new phone?</b> On the device only, never on
+      a server. Use <b>Settings → Backup</b> to write a backup file, put it somewhere you control (AirDrop,
+      Files, a computer), and restore it on the new phone. An encrypted <code>.piankevault</code> backup needs
+      the passphrase you chose — <b>if you lose it, the backup cannot be opened</b>, including by us, because we
+      never had it.</li>
+    </ul>
+
+    <h3>Reporting a problem</h3>
+    <p>The most useful report is the smallest one that reproduces: what you did, what you expected, and what
+    happened instead. Screenshots are welcome. <b>Please do not send anything you would not want a stranger to
+    read</b> — email is not private, and we would rather have a vaguer report than your customer's contact
+    details.</p>
+
+    <h3>What support cannot do</h3>
+    <p>There is no account system and no copy of your data anywhere but your device. That is the whole design of
+    the app, and the cost of it is real: a card deleted without a backup is gone, and a forgotten vault
+    passphrase cannot be reset. Neither is a limitation we can lift for you on request.</p>
+
+    <h3>Privacy</h3>
+    <p>The iOS privacy policy is at <a href="privacy-policy-ios.html">privacy-policy-ios.html</a>. Short version:
+    the app has no networking code at all and collects nothing.</p>
+
+    <h2>繁體中文</h2>
+
+    <h3>聯絡方式</h3>
+    <p><b>piankecard@gmail.com</b>(片刻 Pianke)。來信請附上裝置型號與 iOS 版本;如果是某張名片辨識錯誤,
+    附上那張名片的照片會非常有幫助,不想給的部分當然可以塗掉。</p>
+
+    <h3>寫信之前:最常遇到的三件事</h3>
+    <ul>
+      <li><b>某個欄位辨識錯了,或是空的。</b>在確認畫面點一下該欄位,再點名片照片上的那段文字,App 就會把你點的
+      內容填進去。辨識完全在你的裝置上進行,不可能完美——反光的名片、特殊排版、或斜著拍的照片尤其容易出錯。</li>
+      <li><b>我買了 Pro 但沒有生效。</b>打開升級畫面,點<b>還原購買</b>。購買綁定你的 Apple 帳號,所以同一個帳號
+      登入的其他裝置也會生效。如果還是沒有出現,請來信,<b>不要再買一次</b>。</li>
+      <li><b>我的名片存在哪裡?換手機怎麼搬?</b>只存在你的裝置上,不在任何伺服器。到<b>設定 → 備份</b>匯出備份檔,
+      放到你自己掌控的地方(AirDrop、檔案 App、電腦),再到新手機還原。加密的 <code>.piankevault</code> 備份需要
+      你當初設定的密碼——<b>密碼遺失就打不開了</b>,我們也打不開,因為我們從來沒有那個密碼。</li>
+    </ul>
+
+    <h3>回報問題</h3>
+    <p>最有用的回報是最小的、可以重現的那種:你做了什麼、你預期會發生什麼、實際發生了什麼。歡迎附截圖。
+    <b>請不要寄出你不希望陌生人看到的內容</b>——電子郵件並不私密,我們寧可收到一個模糊的回報,也不希望收到
+    你客戶的聯絡資料。</p>
+
+    <h3>支援做不到的事</h3>
+    <p>這支 App 沒有帳號系統,你的資料除了你的裝置以外不存在任何地方。那是整個設計的核心,而它的代價是真實的:
+    沒有備份就刪掉的名片是救不回來的,忘記的備份密碼也無法重設。這兩件事不是我們可以應要求為你解除的限制。</p>
+
+    <h3>隱私權</h3>
+    <p>iOS 版隱私權政策在 <a href="privacy-policy-ios.html">privacy-policy-ios.html</a>。一句話版本:
+    這支 App 完全沒有網路程式碼,不收集任何資料。</p>
+
+    <footer>片刻 Pianke — 完全離線的名片掃描 · 資料留在你的手機。This is the support page for the iOS app.</footer>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var pp = document.getElementById('pp'), btn = document.getElementById('pp-toggle');
+    btn.addEventListener('click', function () {
+      var dark = pp.dataset.theme === 'dark';
+      pp.dataset.theme = dark ? 'light' : 'dark';
+      btn.textContent = dark ? '深色 / Dark' : '淺色 / Light';
+    });
+  })();
+</script>
+</body>
+</html>
