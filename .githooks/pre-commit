@@ -1,0 +1,7 @@
+#!/bin/sh
+# Versioned hook (enable once per clone: git config core.hooksPath .githooks).
+# en/index.html and the FAQ JSON-LD are generated from index.html; refuse a commit where they are stale.
+python scripts/build_en.py --check || {
+  echo "pre-commit: run 'python scripts/build_en.py' and stage index.html + en/index.html." >&2
+  exit 1
+}
