@@ -34,11 +34,16 @@
   // to "flyer" so a hand-typed URL still lands on the store.
   // The app's text shares (Share to LINE) end with /get?share (a scanned card) or /get?mycard (the
   // user's own card); those are shares, not print, and are labelled as such.
+  // The desktop QR on the home page points at /get?site, so site scans are counted apart from print.
   (function () {
     var tag = (location.search.replace(/^\?/, "").match(/^[a-z0-9-]{1,12}$/) || [""])[0];
-    var shares = { share: "card-share", mycard: "mycard-share" };
-    var referrer = Object.prototype.hasOwnProperty.call(shares, tag)
-      ? "utm_source=" + shares[tag] + "&utm_medium=share&utm_campaign=app-share"
+    var known = {
+      share: "utm_source=card-share&utm_medium=share&utm_campaign=app-share",
+      mycard: "utm_source=mycard-share&utm_medium=share&utm_campaign=app-share",
+      site: "utm_source=site-home&utm_medium=qr&utm_campaign=site"
+    };
+    var referrer = Object.prototype.hasOwnProperty.call(known, tag)
+      ? known[tag]
       : "utm_source=" + (tag ? "flyer-" + tag : "flyer") + "&utm_medium=print&utm_campaign=card-flyer";
     var play = "https://play.google.com/store/apps/details?id=com.pianke.cardscanner&referrer=" +
       encodeURIComponent(referrer);
