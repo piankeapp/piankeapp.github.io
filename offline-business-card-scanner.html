@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-itunes-app" content="app-id=6813446077">
+<title>Offline Business Card Scanner: No Account, No Cloud, No Subscription | Pianke</title>
+<meta name="description" content="Pianke is an offline business card scanner for Android and iPhone. On-device OCR, no account, no cloud, no subscription. Plus how to check whether any card scanner app uploads your contacts.">
+<link rel="canonical" href="https://piankeapp.github.io/offline-business-card-scanner.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="A business card scanner that can't upload your contacts">
+<meta property="og:description" content="Offline business card scanner for Android and iPhone: on-device OCR, no account, no cloud, no subscription.">
+<meta property="og:url" content="https://piankeapp.github.io/offline-business-card-scanner.html">
+<meta property="og:image" content="https://piankeapp.github.io/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Pianke">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="index, follow">
+
+<style>
+  :root {
+    --paper: #faf9f5;
+    --paper-2: #f0eee7;
+    --panel: #fffefb;
+    --ink: #14201d;
+    --muted: #5c6b66;
+    --teal: #0a4f4a;
+    --cyan: #6ff6fe;
+    --on-cyan: #04312f;
+    --line: rgba(10, 79, 74, .14);
+    --line-strong: rgba(10, 79, 74, .28);
+    --warm: #8a5a12;
+    --warm-bg: rgba(214, 158, 46, .12);
+    --sans: "Segoe UI", system-ui, -apple-system, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    --mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
+    --maxw: 760px;
+  }
+  :root[data-theme="dark"] {
+    --paper: #0d1c19;
+    --paper-2: #0a1613;
+    --panel: #14231f;
+    --ink: #e3ebe8;
+    --muted: #93aaa4;
+    --teal: #4cd9e2;
+    --cyan: #6ff6fe;
+    --line: rgba(111, 246, 254, .13);
+    --line-strong: rgba(111, 246, 254, .28);
+    --warm: #e8c477;
+    --warm-bg: rgba(232, 196, 119, .10);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; font-family: var(--sans); color: var(--ink); background: var(--paper);
+    line-height: 1.75; -webkit-font-smoothing: antialiased;
+    transition: background .4s ease, color .4s ease;
+  }
+  .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+  .wrap.nav-row { max-width: 1160px; }
+  a { color: var(--teal); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  h1, h2, h3 { text-wrap: balance; letter-spacing: -.02em; line-height: 1.22; }
+  h1 { font-size: clamp(1.72rem, 4.4vw, 2.5rem); font-weight: 800; margin: 18px 0 0; line-height: 1.14; }
+  h2 { font-size: clamp(1.18rem, 2.4vw, 1.42rem); font-weight: 750; margin: 52px 0 14px; }
+  h3 { font-size: 1.02rem; font-weight: 700; margin: 26px 0 8px; }
+  p { margin: 16px 0; }
+  ul, ol { margin: 16px 0; padding-left: 1.35em; }
+  li { margin: 8px 0; }
+  strong { font-weight: 700; }
+  code { font-family: var(--mono); font-size: .88em; background: var(--paper-2); padding: 2px 6px; border-radius: 5px; }
+
+  .eyebrow { font-size: .74rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--teal); display: inline-flex; align-items: center; gap: 9px; }
+  .eyebrow::before { content: ""; width: 22px; height: 2px; background: var(--cyan); display: inline-block; }
+
+  .btn { display: inline-flex; align-items: center; gap: 9px; font: inherit; font-weight: 650; padding: 13px 22px; border-radius: 999px; border: 0; cursor: pointer; text-decoration: none; font-size: .98rem; transition: transform .15s ease, box-shadow .15s ease; }
+  .btn.primary { background: var(--teal); color: #fff; }
+  .btn.primary:hover { transform: translateY(-2px); box-shadow: 0 12px 24px -12px var(--teal); }
+  :root[data-theme="dark"] .btn.primary { background: var(--cyan); color: var(--on-cyan); }
+  .btn.ghost { background: transparent; color: var(--teal); border: 1px solid var(--line-strong); }
+  .btn.ghost:hover { border-color: var(--teal); }
+  .btn svg { width: 18px; height: 18px; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
+
+  nav { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--paper) 86%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+  nav .row { display: flex; align-items: center; justify-content: space-between; height: 66px; gap: 16px; }
+  .brand { display: flex; align-items: center; gap: 11px; font-weight: 750; font-size: 1.12rem; letter-spacing: -.01em; text-decoration: none; color: inherit; }
+  .logo { width: 34px; height: 34px; border-radius: 10px; flex: none; background: linear-gradient(150deg, #0a4f4a, #063633); display: grid; place-items: center; box-shadow: inset 0 0 0 1px rgba(255,255,255,.08); }
+  .logo span { width: 14px; height: 9px; border-radius: 2.5px; background: var(--cyan); box-shadow: 0 6px 0 -2px rgba(111,246,254,.5); }
+  .brand small { font-weight: 500; font-size: .74rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .tools { display: flex; align-items: center; gap: 8px; }
+  .toolbtn { font: inherit; font-size: .82rem; font-weight: 650; color: var(--teal); background: transparent; border: 1px solid var(--line-strong); border-radius: 999px; height: 36px; min-width: 36px; padding: 0; width: 36px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; transition: border-color .15s; }
+  .toolbtn:hover { border-color: var(--teal); }
+  .toolbtn svg { width: 18px; height: 18px; }
+  #themeBtn .sun { display: none; }
+  :root[data-theme="dark"] #themeBtn .sun { display: block; }
+  :root[data-theme="dark"] #themeBtn .moon { display: none; }
+
+  header.art { padding: clamp(32px, 6vw, 56px) 0 8px; border-bottom: 1px solid var(--line); background:
+      radial-gradient(620px 300px at 88% -30%, rgba(111,246,254,.16), transparent 60%); }
+  .meta { color: var(--muted); font-size: .86rem; margin: 20px 0 26px; }
+  .lead { font-size: 1.09rem; color: var(--muted); margin-top: 20px; }
+
+  .box { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 22px 24px; margin: 28px 0; }
+  .box.key { border-left: 4px solid var(--teal); }
+  :root[data-theme="dark"] .box.key { border-left-color: var(--cyan); }
+  .box.warn { background: var(--warm-bg); border-color: color-mix(in srgb, var(--warm) 34%, transparent); }
+  .box.warn strong { color: var(--warm); }
+  .box h3:first-child, .box p:first-child { margin-top: 0; }
+  .box > :last-child { margin-bottom: 0; }
+
+  ol.steps { list-style: none; padding: 0; counter-reset: s; }
+  ol.steps > li { counter-increment: s; position: relative; padding-left: 44px; margin: 18px 0; }
+  ol.steps > li::before {
+    content: counter(s); position: absolute; left: 0; top: 1px;
+    width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center;
+    background: var(--teal); color: #fff; font-size: .84rem; font-weight: 700;
+  }
+  :root[data-theme="dark"] ol.steps > li::before { background: var(--cyan); color: var(--on-cyan); }
+
+  .tablewrap { overflow-x: auto; margin: 24px 0; border: 1px solid var(--line); border-radius: 14px; background: var(--panel); }
+  table { border-collapse: collapse; width: 100%; min-width: 620px; font-size: .92rem; }
+  th, td { text-align: left; padding: 13px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-weight: 700; background: var(--paper-2); font-size: .85rem; }
+  tr:last-child td { border-bottom: 0; }
+
+  .cta { background: var(--panel); border: 1px solid var(--line-strong); border-radius: 20px; padding: 28px; margin: 44px 0 8px; }
+  .cta .row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
+  .note { color: var(--muted); font-size: .84rem; }
+
+  footer { border-top: 1px solid var(--line); margin-top: 56px; padding: 30px 0 44px; }
+  footer .links { display: flex; gap: 18px; flex-wrap: wrap; margin: 12px 0; font-size: .9rem; }
+  .fine { color: var(--muted); font-size: .8rem; line-height: 1.7; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-row row">
+    <a class="brand" href="index.html">
+      <span class="logo"><span></span></span>
+      Pianke<small>· Offline card scanner</small>
+    </a>
+    <div class="tools">
+      <button class="toolbtn" id="themeBtn" aria-label="Toggle dark mode">
+        <svg class="moon" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A8 8 0 1 1 11.2 3a6.5 6.5 0 0 0 9.8 9.8z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6 19 19M19 5l-1.4 1.4M6.4 17.6 5 19"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<header class="art">
+  <div class="wrap">
+    <span class="eyebrow">Offline business card scanner</span>
+    <h1>A business card scanner that can't upload your contacts.<br>And how to check that yourself.</h1>
+    <p class="lead">Most card scanner apps want an account, sync your cards to their cloud, and charge a subscription. Pianke does the opposite: scanning, OCR and field parsing all run on your phone. You don't have to take our word for it. Both Android and iPhone let you verify it in a minute.</p>
+    <div class="meta"><span>Updated 2026-10-04</span></div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="box key">
+    <h3>Why this matters for business cards</h3>
+    <p>A business card holds <strong>someone else's</strong> personal data: a client's name, title, mobile number and work email, handed to you in person. When you scan it into an app that syncs to the cloud, you decide on their behalf which company gets to keep it. If you meet people for a living, that adds up to hundreds of contacts.</p>
+  </div>
+
+  <h2>Check an Android app: the permission list (30 seconds, before installing)</h2>
+  <ol class="steps">
+    <li>Open the app's page on Google Play.</li>
+    <li>Scroll to <strong>About this app</strong>, then open <strong>App permissions</strong>.</li>
+    <li>Look for <strong>Full network access</strong> (Android's <code>INTERNET</code> permission).</li>
+  </ol>
+  <p>Having network access doesn't prove an app uploads your cards, since most apps request it for ads, analytics or sync. But an app <strong>without</strong> it has no way to send anything off your phone. That conclusion doesn't depend on anyone's privacy policy.</p>
+
+  <h2>Check an iPhone app: the App Privacy Report (a few days, after installing)</h2>
+  <p>iOS has no network permission to inspect: every iPhone app can go online without asking. What iOS does have is a system log of where each app actually connects.</p>
+  <ol class="steps">
+    <li>Go to <strong>Settings → Privacy &amp; Security → App Privacy Report</strong> and turn it on.</li>
+    <li>Use the card app normally for a few days.</li>
+    <li>Come back and look at <strong>App Network Activity</strong>. A truly offline app won't appear there at all.</li>
+  </ol>
+  <p>Before installing, you can also read the <strong>App Privacy</strong> label on the App Store page. It's declared by the developer, not audited by Apple, so treat it as a statement rather than proof. The App Privacy Report is the hard evidence.</p>
+
+  <h2>What Pianke does</h2>
+  <ul>
+    <li><strong>Android:</strong> no INTERNET permission and no CAMERA permission. Capture is handled by Google Play Services' document scanner, and OCR and parsing run on the device.</li>
+    <li><strong>iPhone / iPad:</strong> the app contains no networking code. Capture uses Apple's system document scanner (VisionKit), and text recognition uses Apple's on-device Vision framework. Its App Store privacy label is <strong>Data Not Collected</strong>.</li>
+    <li><strong>No account, no cloud, no ads, no tracking.</strong> Free for up to 15 cards; Pro is a one-time purchase with no subscription.</li>
+  </ul>
+
+  <h2>Features (Android)</h2>
+  <ul>
+    <li><strong>Multilingual on-device OCR</strong> for Chinese, English, Japanese and Korean, with Malay and Vietnamese via the Latin recognizer. Parsing is tuned for Taiwan, China, Japan, Korea, Malaysia, Singapore, Vietnam and English card layouts.</li>
+    <li><strong>Field parsing</strong> for name, company, title, phones, emails, address, website and notes, plus decoding of contact QR codes printed on cards.</li>
+    <li><strong>Review and merge:</strong> tap text on the card image to drop it into a field; merge a re-scanned contact into the existing card in one tap.</li>
+    <li><strong>My Card QR:</strong> share your own card as a QR that any phone camera can save as a contact, without installing anything.</li>
+    <li><strong>Export</strong> as vCard or CSV, insert into Contacts, or export card images as PDF/JPEG. Encrypted local backup and App Lock.</li>
+    <li><strong>English or Traditional Chinese UI</strong>, switchable inside the app.</li>
+  </ul>
+  <p>The iPhone app currently has a Traditional Chinese interface.</p>
+
+  <div class="cta">
+    <h3 style="margin-top:0">Pianke: the offline business card scanner</h3>
+    <p style="margin-bottom:0">Scan, recognize, organize and export, all on your phone. No account, no cloud, no subscription, no ads, no tracking. Free for 15 cards; Pro is a one-time purchase.</p>
+    <div class="row">
+      <a class="btn primary" href="https://play.google.com/store/apps/details?id=com.pianke.cardscanner&amp;hl=en&amp;referrer=utm_source%3Dsite-en%26utm_medium%3Darticle%26utm_campaign%3Doffline-scanner">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5V3.5a1 1 0 0 1 1.5-.87l14.5 8.5a1 1 0 0 1 0 1.74l-14.5 8.5A1 1 0 0 1 3 20.5z"/></svg>
+        Get it on Google Play
+      </a>
+      <a class="btn primary" href="https://apps.apple.com/app/id6813446077">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.37 12.62c-.02-2.33 1.9-3.45 1.99-3.5-1.08-1.59-2.77-1.8-3.37-1.83-1.43-.15-2.8.84-3.53.84-.73 0-1.85-.82-3.04-.8-1.56.02-3 .91-3.81 2.31-1.63 2.82-.42 7 1.17 9.29.78 1.12 1.7 2.38 2.91 2.33 1.17-.05 1.61-.75 3.02-.75 1.41 0 1.81.75 3.04.73 1.26-.02 2.05-1.14 2.82-2.27.89-1.3 1.25-2.56 1.27-2.62-.03-.01-2.43-.93-2.45-3.7zM14.06 5.77c.64-.78 1.08-1.86.96-2.94-.93.04-2.05.62-2.72 1.39-.6.69-1.12 1.79-.98 2.85 1.03.08 2.09-.53 2.74-1.3z"/></svg>
+        Download on the App Store
+      </a>
+    </div>
+    <p class="note" style="margin-bottom:0">Android 8.0+ · iPhone / iPad on iOS 17+ · Free download · One-time Pro, no subscription</p>
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="brand" style="font-size:1rem"><span class="logo"><span></span></span>Pianke</div>
+    <div class="links">
+      <a href="index.html">中文首頁</a>
+      <a href="privacy-policy.html">Privacy policy (Android)</a>
+      <a href="privacy-policy-ios.html">Privacy policy (iOS)</a>
+      <a href="support.html">Support</a>
+    </div>
+    <p class="fine">
+      <strong>Disclosure:</strong> written by the Pianke team about our own app. The checking methods work for any app, including ours.<br>
+      <strong>Note:</strong> store and Settings labels may change with Google and Apple updates. The App Privacy Report requires iOS 15.2 or later.<br>
+      <strong>Trademarks:</strong> Google Play and Android are trademarks of Google LLC. iPhone and App Store are trademarks of Apple Inc. This page is not affiliated with or endorsed by Google or Apple.<br>
+      © 2026 Pianke
+    </p>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "A business card scanner that can't upload your contacts, and how to check that yourself",
+  "description": "Pianke is an offline business card scanner for Android and iPhone with no account, no cloud and no subscription. How to verify any card app's network behavior on Android and iPhone.",
+  "datePublished": "2026-10-04",
+  "dateModified": "2026-10-04",
+  "inLanguage": "en",
+  "mainEntityOfPage": "https://piankeapp.github.io/offline-business-card-scanner.html",
+  "author": { "@type": "Organization", "name": "Pianke" },
+  "publisher": { "@type": "Organization", "name": "Pianke" }
+}
+</script>
+
+<script>
+  const root = document.documentElement;
+  const themeBtn = document.getElementById("themeBtn");
+  themeBtn.addEventListener("click", () => {
+    root.dataset.theme = (root.dataset.theme === "dark") ? "light" : "dark";
+  });
+</script>
+
+</body>
+</html>
