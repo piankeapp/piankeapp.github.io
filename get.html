@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>下載片刻 Pianke</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://piankeapp.github.io/">
+<style>
+  :root { --paper: #faf9f5; --ink: #14201d; --muted: #5c6b66; --teal: #0a4f4a; --cyan: #6ff6fe; --on-cyan: #04312f; }
+  @media (prefers-color-scheme: dark) { :root { --paper: #0f1716; --ink: #e8efed; --muted: #9db0ab; --teal: #6ff6fe; } }
+  html, body { margin: 0; background: var(--paper); color: var(--ink); }
+  body { font-family: "Segoe UI", system-ui, -apple-system, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif; display: grid; place-items: center; min-height: 100vh; padding: 24px 16px; box-sizing: border-box; text-align: center; }
+  h1 { font-size: 1.5rem; margin: 0 0 8px; }
+  p { color: var(--muted); margin: 0 0 24px; }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+  a.btn { display: inline-block; padding: 13px 22px; border-radius: 999px; background: var(--cyan); color: var(--on-cyan); font-weight: 650; text-decoration: none; }
+  a.home { display: inline-block; margin-top: 22px; color: var(--teal); }
+</style>
+</head>
+<body>
+<main>
+  <h1>片刻 Pianke</h1>
+  <p>完全離線的名片掃描:不連網、不需帳號、不訂閱。</p>
+  <div class="row">
+    <a class="btn" id="ios" href="https://apps.apple.com/app/id6813446077">App Store 下載</a>
+    <a class="btn" id="android" href="https://play.google.com/store/apps/details?id=com.pianke.cardscanner">Google Play 下載</a>
+  </div>
+  <a class="home" href="index.html">看產品介紹</a>
+</main>
+<script>
+  // Printed flyers point here as /get?a, /get?b, ... The query names the flyer version, carried into the
+  // Play install referrer so Play Console can tell the versions apart. Unknown or missing values fall back
+  // to "flyer" so a hand-typed URL still lands on the store.
+  (function () {
+    var tag = (location.search.replace(/^\?/, "").match(/^[a-z0-9-]{1,12}$/) || [""])[0];
+    var source = tag ? "flyer-" + tag : "flyer";
+    var play = "https://play.google.com/store/apps/details?id=com.pianke.cardscanner&referrer=" +
+      encodeURIComponent("utm_source=" + source + "&utm_medium=print&utm_campaign=card-flyer");
+    var appStore = "https://apps.apple.com/app/id6813446077";
+    document.getElementById("android").href = play;
+
+    var ua = navigator.userAgent;
+    var iOS = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+    var android = /Android/.test(ua);
+    if (iOS) location.replace(appStore);
+    else if (android) location.replace(play);
+  })();
+</script>
+</body>
+</html>
