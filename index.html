@@ -229,7 +229,7 @@
   .news-pill b { flex: none; background: var(--teal); color: #fff; font-size: .7rem; letter-spacing: .12em; padding: 4px 9px; border-radius: 999px; }
   :root[data-theme="dark"] .news-pill b { background: var(--cyan); color: var(--on-cyan); }
   .news-pill svg { width: 15px; height: 15px; flex: none; color: var(--teal); }
-  .spot { margin-top: 40px; display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(28px, 5vw, 64px); align-items: center; background: var(--panel); border: 1px solid var(--line-strong); border-radius: 26px; padding: clamp(26px, 4vw, 52px); position: relative; overflow: hidden; }
+  .spot { margin-top: 24px; display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(28px, 5vw, 64px); align-items: center; background: var(--panel); border: 1px solid var(--line-strong); border-radius: 26px; padding: clamp(26px, 4vw, 52px); position: relative; overflow: hidden; }
   .spot::before { content: ""; position: absolute; inset: 0; background: radial-gradient(520px 360px at 100% 0%, rgba(111,246,254,.18), transparent 60%); pointer-events: none; }
   .spot > * { position: relative; }
   .spot h3 { font-size: clamp(1.6rem, 3vw, 2.3rem); font-weight: 750; margin-top: 16px; }
@@ -252,7 +252,6 @@
   .log .wdate { display: block; margin-bottom: 6px; }
   .log p { color: var(--muted); font-size: .92rem; margin: 8px 0 0; line-height: 1.55; }
   .log .vtags { margin-top: 14px; }
-  .log-note { color: var(--muted); font-size: .84rem; margin-top: 18px; }
 
   /* report preview mock — a white PDF page inside the device screen */
   .rp-page { margin: 2cqw 4.67cqw 0; background: #fff; color: #1a1c1e; border-radius: 2.7cqw; padding: 4.67cqw; box-shadow: 0 1px 4px rgba(20,30,28,.18); }
@@ -438,11 +437,7 @@
      Never mark a version .live before it is actually downloadable. -->
 <section class="section" id="new">
   <div class="wrap">
-    <div class="sect-head">
-      <span class="eyebrow" data-en="What's new">新功能</span>
-      <h2 data-en="Every update, marked here.">每次更新,都標在這裡。</h2>
-      <p data-en="Each feature shows which Android and iOS version first supports it.">每項新功能都標明 Android 與 iOS 各從哪一版開始支援。</p>
-    </div>
+    <span class="eyebrow" data-en="What's new">新功能</span>
 
     <article class="spot reveal">
       <div class="txt">
@@ -532,7 +527,6 @@
         </div>
       </li>
     </ol>
-    <p class="log-note" data-en="Version tags mark the first version that supports a feature — update to it or later. The iOS app first launched in October 2026 at 1.4.6.">標籤是「從這一版開始支援」,更新到該版或更新版即可使用。iOS 版於 2026 年 10 月以 1.4.6 首次上架。</p>
   </div>
 </section>
 
