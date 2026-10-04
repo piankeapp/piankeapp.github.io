@@ -32,11 +32,16 @@
   // Printed flyers point here as /get?a, /get?b, ... The query names the flyer version, carried into the
   // Play install referrer so Play Console can tell the versions apart. Unknown or missing values fall back
   // to "flyer" so a hand-typed URL still lands on the store.
+  // The app's text shares (Share to LINE) end with /get?share (a scanned card) or /get?mycard (the
+  // user's own card); those are shares, not print, and are labelled as such.
   (function () {
     var tag = (location.search.replace(/^\?/, "").match(/^[a-z0-9-]{1,12}$/) || [""])[0];
-    var source = tag ? "flyer-" + tag : "flyer";
+    var shares = { share: "card-share", mycard: "mycard-share" };
+    var referrer = Object.prototype.hasOwnProperty.call(shares, tag)
+      ? "utm_source=" + shares[tag] + "&utm_medium=share&utm_campaign=app-share"
+      : "utm_source=" + (tag ? "flyer-" + tag : "flyer") + "&utm_medium=print&utm_campaign=card-flyer";
     var play = "https://play.google.com/store/apps/details?id=com.pianke.cardscanner&referrer=" +
-      encodeURIComponent("utm_source=" + source + "&utm_medium=print&utm_campaign=card-flyer");
+      encodeURIComponent(referrer);
     var appStore = "https://apps.apple.com/app/id6813446077";
     document.getElementById("android").href = play;
 
