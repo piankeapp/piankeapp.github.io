@@ -43,7 +43,7 @@
     --muted: #5c6b66;
     --teal: #0a4f4a;
     --teal-900: #063633;
-    --cyan: #6ff6fe;
+    --cyan: #c8e4c8;
     --on-cyan: #04312f;
     --line: rgba(10, 79, 74, .14);
     --line-strong: rgba(10, 79, 74, .28);
@@ -66,8 +66,8 @@
     --panel: #14231f;
     --ink: #e3ebe8;
     --muted: #93aaa4;
-    --teal: #4cd9e2;
-    --cyan: #6ff6fe;
+    --teal: #a9d9bf;
+    --cyan: #c8e4c8;
     --line: rgba(111, 246, 254, .13);
     --line-strong: rgba(111, 246, 254, .28);
 
@@ -79,6 +79,12 @@
 
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
+  :where(a, button, summary, [tabindex]):focus-visible { outline: 3px solid var(--teal); outline-offset: 5px; }
+  .band :where(a, button):focus-visible { outline-color: var(--cyan); }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
 
   body {
     margin: 0; font-family: var(--sans); color: var(--ink); background: var(--paper);
@@ -134,6 +140,10 @@
   .hero h1 .mark { position: relative; white-space: nowrap; }
   .hero h1 .mark::after { content: ""; position: absolute; left: -.04em; right: -.04em; bottom: .08em; height: .34em; background: var(--cyan); z-index: -1; border-radius: 3px; transform: skewX(-6deg); }
   .hero p.lead { font-size: clamp(1.06rem, 1.7vw, 1.24rem); color: var(--muted); max-width: 40ch; margin: 22px 0 0; }
+  .hero .start-note { color: var(--teal); font-weight: 650; margin: 18px 0 0; font-size: .96rem; }
+  .hero .start-note a { color: inherit; text-underline-offset: 3px; }
+  .hero .path { display: flex; flex-wrap: wrap; gap: 8px 16px; list-style: none; padding: 0; margin: 22px 0 0; color: var(--muted); font-size: .9rem; }
+  .hero .path b { color: var(--teal); margin-right: 5px; }
   .hero-figure { position: relative; display: flex; justify-content: center; }
   .hero .more { display: inline-flex; align-items: center; gap: 6px; margin-top: 18px; font-size: .92rem; font-weight: 600; color: var(--teal); text-decoration: none; }
   .hero .more:hover { text-decoration: underline; text-underline-offset: 3px; }
@@ -440,8 +450,11 @@
     .demo-arrow svg { transform: rotate(90deg); }
   }
   @media (max-width: 400px) {
-    nav .brand { gap: 8px; font-size: 1rem; }
+    nav .brand { gap: 6px; font-size: .9rem; }
     nav .logo { width: 30px; height: 30px; }
+    nav .row { gap: 8px; }
+    nav .tools .btn { padding: 9px 10px !important; font-size: .86rem; }
+    nav .toolbtn { min-width: 32px; padding: 0 8px; }
   }
   @media (max-width: 480px) {
     .wrap { padding: 0 16px; }
@@ -458,6 +471,126 @@
     .store img { height: 44px; }
     .cmp { font-size: .88rem; }
     .cmp th, .cmp td { padding: 12px 8px; }
+  }
+
+  /* Paper to people: a compact, layered product story. */
+  :root { --accent: #b5512a; --soft-orange: #f1dfce; --sans: "PingFang TC", "Microsoft JhengHei", "Segoe UI", sans-serif; }
+  :root[data-theme="dark"] { --accent: #efa57b; --soft-orange: #403027; }
+  .hero::before, :root[data-theme="dark"] .hero::before { background: radial-gradient(ellipse at 78% 40%, var(--soft-orange), transparent 62%); }
+  .hero .grid { grid-template-columns: 1.06fr 1fr; gap: 0 38px; padding-top: 58px; padding-bottom: 58px; }
+  .hero-copy { align-self: end; padding-bottom: 22px; }
+  .hero h1 { font-family: "Iowan Old Style", "Palatino Linotype", "Songti TC", "PMingLiU", serif; font-size: clamp(2.8rem, 5.2vw, 4.3rem); line-height: 1.24; font-weight: 700; letter-spacing: -.05em; margin-top: 22px; }
+  .hero h1 .mark { white-space: nowrap; }
+  .hero h1 .mark::after { background: var(--soft-orange); height: .2em; }
+  html[lang="en"] .hero h1 .mark { white-space: normal; }
+  .hero p.lead { max-width: 27em; line-height: 1.8; margin-top: 20px; }
+  .hero-actions { align-self: start; }
+  .hero-actions .stores { margin-top: 0; gap: 14px; }
+  .hero-actions .qr { display: none; }
+  .hero .start-note { margin-top: 16px; font-size: .86rem; line-height: 1.8; }
+  .hero .start-note a { color: var(--muted); text-decoration: none; font-weight: 400; }
+  .hero .start-note a:hover { text-decoration: underline; }
+  .hero .more { margin-top: 18px; font-size: .88rem; }
+  .hero-figure { grid-column: 2; grid-row: 1 / 3; height: 560px; margin: 0; isolation: isolate; display: block; }
+  .hero-figure::before { width: 86%; height: 76%; top: 9%; left: 10%; border: 1px solid var(--line-strong); border-radius: 48% 48% 44% 44%; transform: rotate(-12deg); background: none; filter: none; }
+  .hero-figure .device { position: absolute; width: 225px; right: 7%; top: 17px; transform: rotate(7deg); padding: 7px; border-radius: 34px; }
+  .hero-figure .device .scr { border-radius: 27px; }
+  .paper-card { position: absolute; z-index: 2; top: 82px; left: -8px; width: 250px; padding: 24px; min-height: 155px; background: #fff9ed; color: #25463b; transform: rotate(-12deg); box-shadow: 0 17px 28px -20px #253d35; border: 1px solid #e2d6c4; }
+  .paper-card strong, .paper-card>span:not(.paper-stamp), .paper-card small { display: block; }
+  .paper-brand { font-size: 9px; letter-spacing: .15em; margin-bottom: 20px; }
+  .paper-card strong { font-size: 24px; letter-spacing: .12em; font-family: "Songti TC", "PMingLiU", serif; }
+  .paper-card>span:not(.paper-brand):not(.paper-stamp) { font-size: 10px; }
+  .paper-rule { height: 1px; background: #c6cdbc; margin: 14px 0 8px; }
+  .paper-card small { font-size: 9px; letter-spacing: .04em; }
+  html[lang="en"] .paper-card strong { font-size: 19px; letter-spacing: .02em; max-width: calc(100% - 28px); }
+  html[lang="en"] .paper-stamp { top: 70px; }
+  .paper-stamp { position: absolute; right: 24px; top: 67px; color: #b5512a; font: italic 40px Georgia,serif; }
+  .card-arrow { position: absolute; z-index: 3; color: var(--accent); width: 150px; left: 22px; top: 295px; transform: rotate(18deg); }
+  .contact-result { position: absolute; z-index: 4; width: 300px; right: 0; bottom: 45px; padding: 20px; background: var(--panel); border: 1px solid var(--line-strong); border-radius: 15px; box-shadow: 0 22px 45px -25px #263e35; transform: rotate(-4deg); }
+  .result-status { display: block; color: var(--teal); font-size: 11px; font-weight: 700; margin-bottom: 14px; }
+  .contact-person { display: flex; gap: 12px; align-items: center; }
+  .contact-avatar { width: 40px; height: 40px; display: grid; place-items: center; background: var(--soft-orange); color: var(--accent); border-radius: 50%; font: 24px Georgia,serif; }
+  .contact-person strong { display: block; font-size: 18px; }
+  .contact-person div>span { display: block; font-size: 11px; color: var(--muted); }
+  .result-check { margin-left: auto; color: var(--teal); font-size: 22px; }
+  .contact-tags { display: flex; gap: 8px; margin-top: 15px; }
+  .contact-tags span { padding: 3px 9px; border-radius: 3px; font-size: 10px; color: var(--teal); background: color-mix(in srgb,var(--teal) 8%,var(--panel)); }
+  .hero-figure figcaption { position: absolute; bottom: 0; width: 100%; text-align: center; color: var(--muted); font-size: 10px; }
+  .feat { position: relative; }
+  .feat .art { position: relative; padding: 24px 0; }
+  .feat .art::before { content: ""; position: absolute; inset: 9% 3%; border-radius: 48% 42% 46% 40%; background: var(--paper-2); transform: rotate(-8deg); }
+  .feat:nth-child(even) .art::before { background: var(--soft-orange); transform: rotate(8deg); }
+  .feat .device { width: 250px; transform: rotate(3deg); }
+  .feat:nth-child(even) .device { transform: rotate(-3deg); }
+  .feat .eyebrow { color: var(--accent); }
+  .meeting-note { max-width: 340px; margin-top: 28px; padding: 20px 24px; background: var(--soft-orange); border-left: 3px solid var(--accent); transform: rotate(-2deg); }
+  .meeting-note>span { font-size: .75rem; color: var(--accent); font-weight: 650; }
+  .meeting-note p { color: var(--ink); font-size: 1rem; margin-top: 8px; }
+  .meeting-note small { display: block; color: var(--muted); font-size: .68rem; margin-top: 12px; }
+  .mini { background: none; border: 0; border-top: 1px solid var(--line-strong); border-radius: 0; padding: 24px 12px 18px 0; }
+  .mini .ic { border-radius: 50%; }
+  .privacy-details { margin-top: 28px; }
+  .privacy-details summary { cursor: pointer; font-size: .9rem; color: #c8e4c8; }
+  .privacy-details .flow { margin-top: 14px; }
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-figure .paper-card { animation: paper-arrive .8s ease-out both; }
+    .hero-figure .contact-result { animation: result-arrive .8s .2s ease-out both; }
+    @keyframes paper-arrive { from { opacity: 0; translate: -20px 10px; } to { opacity: 1; translate: 0 0; } }
+    @keyframes result-arrive { from { opacity: 0; translate: 0 18px; } to { opacity: 1; translate: 0 0; } }
+  }
+  @media (max-width: 900px) {
+    .hero .grid { grid-template-columns: 1fr; padding-top: 28px; padding-bottom: 32px; gap: 0; }
+    .hero-copy { padding-bottom: 8px; text-align: center; }
+    .hero h1 { font-size: clamp(2.5rem, 7vw, 3.4rem); margin-top: 12px; }
+    .hero p.lead { margin: 12px auto 0; max-width: 29em; font-size: .99rem; }
+    .hero .eyebrow { font-size: .72rem; }
+    .hero-figure { grid-column: 1; grid-row: 2; width: min(450px,100%); height: 310px; margin: 8px auto 14px; }
+    .hero-figure .device { width: 140px; right: 16%; top: 0; padding: 5px; border-radius: 24px; }
+    .hero-figure .device .scr { border-radius: 19px; }
+    .paper-card { width: 175px; min-height: 120px; padding: 16px; top: 34px; left: 7%; }
+    html[lang="en"] .paper-card strong { font-size: 17px; max-width: none; }
+    html[lang="en"] .paper-stamp { display: none; }
+    .paper-brand { font-size: 7px; margin-bottom: 12px; }
+    .paper-card strong { font-size: 20px; }
+    .paper-rule { margin: 9px 0 5px; }
+    .paper-stamp { font-size: 32px; right: 15px; top: 43px; }
+    .paper-card small { font-size: 8px; }
+    .card-arrow { width: 90px; left: 12%; top: 178px; }
+    .contact-result { width: 232px; right: 3%; bottom: 28px; padding: 13px 15px; }
+    .result-status { font-size: 9px; margin-bottom: 9px; }
+    .contact-person { gap: 8px; }
+    .contact-person strong { font-size: 15px; }
+    .contact-person div>span { font-size: 9px; }
+    .contact-avatar { width: 31px; height: 31px; font-size: 20px; }
+    .contact-tags { margin-top: 8px; }
+    .contact-tags span { font-size: 9px; }
+    .hero-figure figcaption { font-size: 9px; }
+    .hero-actions { text-align: center; }
+    .hero-actions .stores { justify-content: center; }
+    .hero .start-note { margin-top: 10px; font-size: .78rem; }
+    .hero .more { margin-top: 12px; }
+    .hero .start-note br { display: none; }
+    .hero .start-note a { margin-left: 6px; }
+  }
+  @media (max-width: 480px) {
+    .hero .grid { padding-top: 22px; }
+    .hero h1 { font-size: 2.55rem; }
+    .hero h1 .mark { background: linear-gradient(transparent 77%,var(--soft-orange) 77%,var(--soft-orange) 94%,transparent 94%); }
+    .hero p.lead { font-size: .9rem; max-width: 23em; }
+    .hero-figure { height: 290px; }
+    .hero-figure .device { width: 133px; right: 12%; }
+    .paper-card { left: 2%; }
+    .hero-actions .store img { height: 44px; }
+    .hero .more { font-size: .8rem; }
+    .feat .device { width: 220px; }
+  }
+  @media (max-width: 350px) {
+    .hero h1 { font-size: 2.25rem; }
+    .paper-card { width: 151px; }
+    .hero-figure .device { right: 4%; }
+    .contact-result { right: 0; width: 218px; }
+    .hero-actions .stores { gap: 12px; }
+    .hero-actions .store img { height: 42px; }
   }
 </style>
 <script type="application/ld+json">
@@ -602,162 +735,56 @@
 
 <header class="hero">
   <div class="wrap grid">
-    <div class="txt">
-      <a class="news-pill" href="#new"><b>NEW</b><span data-en="Card Report: a trip report in one tap">名片報告:出差報告一鍵產生</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      <span class="eyebrow" data-en="Fully offline · No subscription · Privacy-first">完全離線 · 不訂閱 · 隱私優先</span>
-      <h1 data-en-html='Digitize business cards,<br><span class="mark">keep them on your phone</span>.'>名片數位化,<br><span class="mark">資料留在手機</span>。</h1>
-      <p class="lead" data-en="One shot and Pianke recognizes, parses and files a card — entirely on your phone. No account, no upload, no subscription, not even internet permission.">拍一下,片刻就把名片辨識、解析、整理好——全程在你的手機本機完成,不需帳號、不上傳、不訂閱,連網路權限都沒有。</p>
+    <div class="hero-copy">
+      <span class="eyebrow" data-en="A little less paper. A little more connection.">少一疊名片，多一點連結。</span>
+      <h1 data-en-html='Scan a card.<br><span class="mark">Find the contact later.</span>'>名片拍下來，<br><span class="mark">人脈找得到</span>。</h1>
+      <p class="lead" data-en="Scan. Organize. Search. Less shuffling through cards when it is time to reconnect.">拍照、整理、搜尋。下一次聯絡，少翻一疊名片。</p>
+    </div>
+    <figure class="hero-figure">
+      <div class="paper-card">
+        <span class="paper-brand" data-en="DEMO STUDIO / TAIPEI">示範設計 / TAIPEI</span>
+        <strong data-en="Meiru Chen">陳美如</strong>
+        <span data-en="Sales Director">業務協理</span>
+        <span class="paper-rule"></span>
+        <small>hello@example.com</small>
+        <span class="paper-stamp" aria-hidden="true">P.</span>
+      </div>
+      <svg class="card-arrow" viewBox="0 0 180 100" fill="none" aria-hidden="true"><path d="M8 12C45 94 105 90 162 42M136 43l28-5-3 28" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div class="device"><div class="scr">
+        <img src="img/shot-03-library-grouped.webp" width="600" height="1200" alt="片刻 Android 名片庫實機畫面：聯絡人依公司分組，上方可搜尋姓名與公司。" data-en-alt="Real Pianke Android library: contacts grouped by company, with search by name and company." fetchpriority="high">
+      </div></div>
+      <div class="contact-result">
+        <span class="result-status" data-en="A card, ready to find">一張名片，隨時找得到</span>
+        <div class="contact-person"><span class="contact-avatar" aria-hidden="true">C</span><div><strong data-en="Meiru Chen">陳美如</strong><span data-en="Demo Studio · Sales Director">示範設計 · 業務協理</span></div><span class="result-check" aria-hidden="true">✓</span></div>
+        <div class="contact-tags"><span data-en="Expo contact">展會認識</span><span data-en="Search by company">依公司搜尋</span></div>
+      </div>
+      <figcaption data-en="Card → contact illustration · Android screen with demo data">名片 → 聯絡人示意 · Android 實機畫面與示範資料</figcaption>
+    </figure>
+    <div class="hero-actions">
       <div class="stores">
-        <a class="store" href="https://play.google.com/store/apps/details?id=com.pianke.cardscanner&amp;referrer=utm_source%3Dsite-home%26utm_medium%3Dfinal-cta"><img src="img/badge-google-play-zh.png" data-en-src="img/badge-google-play-en.png" alt="立即下載,Google Play" data-en-alt="Get it on Google Play" width="162" height="48"></a>
+        <a class="store" href="https://play.google.com/store/apps/details?id=com.pianke.cardscanner&amp;referrer=utm_source%3Dsite-home%26utm_medium%3Dhero-cta%26utm_campaign%3Dsite"><img src="img/badge-google-play-zh.png" data-en-src="img/badge-google-play-en.png" alt="立即下載,Google Play" data-en-alt="Get it on Google Play" width="162" height="48"></a>
         <a class="store" href="https://apps.apple.com/tw/app/id6813446077"><img src="img/badge-app-store-zh.svg" data-en-src="img/badge-app-store-en.svg" alt="從 App Store 下載" data-en-alt="Download on the App Store" width="131" height="48"></a>
         <div class="qr"><img src="img/qr-get.svg" alt="" width="88" height="88"><span data-en="Scan with your phone to download">手機掃描下載</span></div>
       </div>
-      <p class="store-note" data-en="Free download · Android 8.0+ · iPhone / iPad on iOS 17+">免費下載 · Android 8.0 以上 · iPhone / iPad(iOS 17 以上)</p>
-      <a class="more" href="#how"><span data-en="See how it works">看看怎麼運作</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-    </div>
-
-    <div class="hero-figure">
-      <div class="device"><div class="scr">
-        <img src="img/shot-01-scan-import.webp" width="600" height="1200" alt="片刻的審核畫面:一張示範名片已辨識成姓名、公司、職稱、電話與 Email 欄位" data-en-alt="Pianke's review screen: a demo business card recognized into name, company, title, phone and email fields" fetchpriority="high">
-        <div class="scanline"></div>
-      </div></div>
+      <p class="start-note" data-en-html='Free download · Keep up to 15 cards<br><a href="#pricing">Need more? Pro is a one-time purchase.</a>'>免費下載 · 最多保存 15 張<br><a href="#pricing">名片多了，再一次買斷 Pro。</a></p>
+      <a class="more" href="#features"><span data-en="Follow a card’s journey">看看一張名片的旅程</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 5v14m-6-6 6 6 6-6"/></svg></a>
     </div>
   </div>
 </header>
 
-<section class="proof">
-  <div class="wrap proof-row">
-    <div class="pf"><b>0</b><span data-en="bytes of your cards uploaded">位元組名片資料上傳</span></div>
-    <div class="pf"><b>0</b><span data-en="internet permissions (Android)">項網路權限(Android 版)</span></div>
-    <div class="pf"><b>0</b><span data-en="accounts to sign up for">個需要註冊的帳號</span></div>
-    <div class="pf"><b data-en="US$14.99">NT$490</b><span data-en="Pro, one-time · no subscription">Pro 一次買斷 · 不訂閱</span></div>
-  </div>
-</section>
 
-<section class="band" id="privacy">
-  <div class="wrap">
-    <span class="eyebrow" data-en="Why Pianke">為什麼選片刻</span>
-    <h2 data-en-html='Your cards <span class="c">never leave this phone</span>.'>你的名片,<span class="c">不會離開這支手機</span>。</h2>
-    <p class="sub" data-en="Most card apps upload your contacts to the cloud. Pianke can't — it never even requests internet permission, so it is technically unable to send your data anywhere.">大多數名片 App 把你交換來的聯絡人上傳到雲端。片刻不行——它連上網的權限都沒有申請,所以在技術上就無法把資料送出去。</p>
 
-    <div class="flow">
-      <div class="ln"><span class="k" data-en="Camera">相機</span><span>→</span><span data-en="on-device ML Kit OCR">ML Kit 裝置端 OCR</span><span>→</span><span data-en="rule-based parse">規則式解析</span><span>→</span><span class="k" data-en="local Room DB">本機 Room 資料庫</span></div>
-      <div class="ln"><span class="z" data-en="# share contacts by exporting vCard / CSV yourself"># 分享聯絡人時,由你自行匯出 vCard / CSV</span></div>
-      <div class="ln"><span class="ok" data-en="↑ bytes uploaded: 0 · network requests: 0 · accounts: none">↑ 上傳位元組:0　·　網路請求:0　·　帳號:無</span></div>
-    </div>
 
-    <div class="stats">
-      <div class="stat"><b>100%</b><span data-en="on-device recognition & storage">本機辨識與儲存</span></div>
-      <div class="stat"><b data-en="CN · EN">中 · 英</b><span data-en="offline OCR support">離線 OCR 支援</span></div>
-    </div>
-  </div>
-</section>
 
-<!-- WHAT'S NEW — newest first. On each release: move the old spotlight into the log, put the new
-     feature in .spot, and tag every item with the FIRST Android / iOS version that supports it.
-     .vtag.live = that version is live in the store; .vtag.soon = built but not yet released.
-     Never mark a version .live before it is actually downloadable. -->
-<section class="section" id="new">
-  <div class="wrap">
-    <span class="eyebrow" data-en="What's new">新功能</span>
 
-    <article class="spot reveal">
-      <div class="txt">
-        <div class="spot-top"><span class="newtag">NEW</span><span class="wdate">2026.09</span><span class="protag">Pro</span></div>
-        <h3 data-en-html="Card Report<br>Back from the trip, report done in one tap.">名片報告<br>出差回來,報告一鍵產生。</h3>
-        <p data-en="Pick the cards from a trip and Pianke assembles a trip / visit report — on your phone, like everything else. Nothing is uploaded.">勾選這趟拿到的名片,片刻幫你整理成一份出差/拜訪結案報告。和掃描一樣,全程在手機本機完成,不上傳。</p>
-        <ul class="flist">
-          <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><span data-en="PDF + CSV in one go: the PDF to file or forward, the CSV for Excel or your CRM">一次輸出 PDF + CSV:PDF 直接交報告,CSV 進 Excel 或 CRM</span></li>
-          <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><span data-en="Card photos (front and back), contact details, per-company stats and a summary">附名片照片(正反面)、聯絡資訊、拜訪公司統計與摘要</span></li>
-          <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><span data-en="Preview it in the app, then share or save it to a folder">在 App 裡先預覽,再分享或存到資料夾</span></li>
-        </ul>
-        <div class="vtags">
-          <span class="vtag live"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.5 19a8.5 8.5 0 0 1 17 0z"/><path d="M8.2 12.2 6.4 9.2M15.8 12.2l1.8-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span data-en="Android 1.5.2+ · available">Android 1.5.2 起 · 已上架</span></span>
-          <span class="vtag soon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.62c-.02-2.33 1.9-3.45 1.99-3.5-1.08-1.59-2.77-1.8-3.37-1.83-1.43-.15-2.8.84-3.53.84-.73 0-1.85-.82-3.04-.8-1.56.02-3 .91-3.81 2.31-1.63 2.82-.42 7 1.17 9.29.78 1.12 1.7 2.38 2.91 2.33 1.17-.05 1.61-.75 3.02-.75 1.41 0 1.81.75 3.04.73 1.26-.02 2.05-1.14 2.82-2.27.89-1.3 1.25-2.56 1.27-2.62-.03-.01-2.43-.93-2.45-3.7zM14.06 5.77c.64-.78 1.08-1.86.96-2.94-.93.04-2.05.62-2.72 1.39-.6.69-1.12 1.79-.98 2.85 1.03.08 2.09-.53 2.74-1.3z"/></svg><span data-en="iOS 1.4.7 · coming soon">iOS 1.4.7 · 即將推出</span></span>
-        </div>
-        <p class="fine" data-en="A Pro feature; the free version makes a watermarked preview.">Pro 功能;免費版可產生帶浮水印的預覽版。</p>
-      </div>
-      <div class="art">
-        <div class="phone"><div class="screen">
-          <div class="s-status"><span>9:41</span><span>▮▮▮ 100%</span></div>
-          <div class="s-bar">
-            <span class="s-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 5l-7 7 7 7"/></svg></span>
-            <span class="t" style="font-size:5.6cqw" data-en="Report preview">報告預覽</span>
-            <span class="s-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5 15.4 17.5M15.4 6.5 8.6 10.5"/></svg></span>
-          </div>
-          <div class="s-scroll">
-            <div class="rp-page">
-              <div class="rp-h" data-en="Trip report">出差拜訪報告</div>
-              <div class="rp-sub" data-en="Sep 15–18, 2026 · Tokyo expo">2026/09/15–09/18 · 東京展會</div>
-              <div class="rp-stats">
-                <div><b>12</b><span data-en="cards">張名片</span></div>
-                <div><b>7</b><span data-en="companies">家公司</span></div>
-              </div>
-              <div class="rp-lb" data-en="COMPANIES">拜訪公司</div>
-              <div class="rp-row"><span data-en="TSMC">台灣積體電路製造</span><i>3</i></div>
-              <div class="rp-row"><span data-en="HTC">宏達國際電子</span><i>2</i></div>
-              <div class="rp-row"><span data-en="5 other companies">其他 5 家公司</span><i>7</i></div>
-              <div class="rp-lb" data-en="CONTACTS">聯絡人</div>
-              <div class="rp-card"><div class="tb"></div><div><div class="nm" data-en="David Wang">王大明</div><div class="co" data-en="Sales Manager · TSMC">業務經理 · 台灣積體電路製造</div></div></div>
-              <div class="rp-card"><div class="tb b"></div><div><div class="nm" data-en="Yen-Ting Lin">林彥廷</div><div class="co" data-en="Sr. Firmware Engineer · HTC">資深韌體工程師 · 宏達國際電子</div></div></div>
-            </div>
-          </div>
-          <div class="rp-act"><span class="o" data-en="Save">存到資料夾</span><span class="p" data-en="Share PDF">分享 PDF</span></div>
-        </div></div>
-      </div>
-    </article>
 
-    <ol class="log">
-      <li class="reveal wide">
-        <span class="wdate">2026.10</span>
-        <h3 data-en="Now on iPhone and iPad">iPhone / iPad 版上架</h3>
-        <p data-en="Offline recognition, company grouping, tags, two-sided and batch scanning, encrypted backup — all on iPhone and iPad. Backups move between Android and iOS, so switching phones is painless.">離線辨識、公司分組、標籤、雙面與批次掃描、加密備份,iPhone / iPad 上都有。備份檔與 Android 版互通,換手機平台也帶得走。</p>
-        <div class="vtags">
-          <span class="vtag live"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.62c-.02-2.33 1.9-3.45 1.99-3.5-1.08-1.59-2.77-1.8-3.37-1.83-1.43-.15-2.8.84-3.53.84-.73 0-1.85-.82-3.04-.8-1.56.02-3 .91-3.81 2.31-1.63 2.82-.42 7 1.17 9.29.78 1.12 1.7 2.38 2.91 2.33 1.17-.05 1.61-.75 3.02-.75 1.41 0 1.81.75 3.04.73 1.26-.02 2.05-1.14 2.82-2.27.89-1.3 1.25-2.56 1.27-2.62-.03-.01-2.43-.93-2.45-3.7zM14.06 5.77c.64-.78 1.08-1.86.96-2.94-.93.04-2.05.62-2.72 1.39-.6.69-1.12 1.79-.98 2.85 1.03.08 2.09-.53 2.74-1.3z"/></svg><span data-en="iOS 1.4.6+ · available">iOS 1.4.6 起 · 已上架</span></span>
-        </div>
-      </li>
-      <li class="reveal">
-        <h3 data-en="Tax ID field">統一編號欄位</h3>
-        <p data-en="The company tax ID is picked up while scanning, is searchable, and goes out with vCard and CSV exports.">掃描時自動擷取統一編號,可搜尋,並一起匯出到 vCard 與 CSV。</p>
-        <div class="vtags">
-          <span class="vtag live"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.5 19a8.5 8.5 0 0 1 17 0z"/><path d="M8.2 12.2 6.4 9.2M15.8 12.2l1.8-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span data-en="Android 1.4.6+">Android 1.4.6 起</span></span>
-          <span class="vtag live"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.62c-.02-2.33 1.9-3.45 1.99-3.5-1.08-1.59-2.77-1.8-3.37-1.83-1.43-.15-2.8.84-3.53.84-.73 0-1.85-.82-3.04-.8-1.56.02-3 .91-3.81 2.31-1.63 2.82-.42 7 1.17 9.29.78 1.12 1.7 2.38 2.91 2.33 1.17-.05 1.61-.75 3.02-.75 1.41 0 1.81.75 3.04.73 1.26-.02 2.05-1.14 2.82-2.27.89-1.3 1.25-2.56 1.27-2.62-.03-.01-2.43-.93-2.45-3.7zM14.06 5.77c.64-.78 1.08-1.86.96-2.94-.93.04-2.05.62-2.72 1.39-.6.69-1.12 1.79-.98 2.85 1.03.08 2.09-.53 2.74-1.3z"/></svg><span data-en="iOS 1.4.6+">iOS 1.4.6 起</span></span>
-        </div>
-      </li>
-      <li class="reveal">
-        <h3 data-en="Tag management">自訂標籤管理</h3>
-        <p data-en="Tag cards as client, vendor and so on, then filter by tag. Add, rename, delete and reorder tags.">幫名片貼上客戶、廠商等標籤,依標籤篩選;標籤可新增、改名、刪除、排序。</p>
-        <div class="vtags">
-          <span class="vtag live"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.5 19a8.5 8.5 0 0 1 17 0z"/><path d="M8.2 12.2 6.4 9.2M15.8 12.2l1.8-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span data-en="Android 1.4.0+">Android 1.4.0 起</span></span>
-          <span class="vtag live"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.62c-.02-2.33 1.9-3.45 1.99-3.5-1.08-1.59-2.77-1.8-3.37-1.83-1.43-.15-2.8.84-3.53.84-.73 0-1.85-.82-3.04-.8-1.56.02-3 .91-3.81 2.31-1.63 2.82-.42 7 1.17 9.29.78 1.12 1.7 2.38 2.91 2.33 1.17-.05 1.61-.75 3.02-.75 1.41 0 1.81.75 3.04.73 1.26-.02 2.05-1.14 2.82-2.27.89-1.3 1.25-2.56 1.27-2.62-.03-.01-2.43-.93-2.45-3.7zM14.06 5.77c.64-.78 1.08-1.86.96-2.94-.93.04-2.05.62-2.72 1.39-.6.69-1.12 1.79-.98 2.85 1.03.08 2.09-.53 2.74-1.3z"/></svg><span data-en="iOS 1.4.6+">iOS 1.4.6 起</span></span>
-        </div>
-      </li>
-      <li class="reveal">
-        <h3 data-en="Two-sided cards · batch scan (Pro)">雙面名片 · 批次連拍(Pro)</h3>
-        <p data-en="Front and back merge into one contact; shoot a whole stack in a row and each card gets its own draft.">正反面合併成同一位聯絡人;整疊名片一次連拍,每張自動建好草稿。</p>
-        <div class="vtags">
-          <span class="vtag live"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.5 19a8.5 8.5 0 0 1 17 0z"/><path d="M8.2 12.2 6.4 9.2M15.8 12.2l1.8-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span data-en="Android 1.3.0+">Android 1.3.0 起</span></span>
-          <span class="vtag live"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.62c-.02-2.33 1.9-3.45 1.99-3.5-1.08-1.59-2.77-1.8-3.37-1.83-1.43-.15-2.8.84-3.53.84-.73 0-1.85-.82-3.04-.8-1.56.02-3 .91-3.81 2.31-1.63 2.82-.42 7 1.17 9.29.78 1.12 1.7 2.38 2.91 2.33 1.17-.05 1.61-.75 3.02-.75 1.41 0 1.81.75 3.04.73 1.26-.02 2.05-1.14 2.82-2.27.89-1.3 1.25-2.56 1.27-2.62-.03-.01-2.43-.93-2.45-3.7zM14.06 5.77c.64-.78 1.08-1.86.96-2.94-.93.04-2.05.62-2.72 1.39-.6.69-1.12 1.79-.98 2.85 1.03.08 2.09-.53 2.74-1.3z"/></svg><span data-en="iOS 1.4.6+">iOS 1.4.6 起</span></span>
-        </div>
-      </li>
-      <li class="reveal">
-        <h3 data-en="Tap the card to fill a field">點名片文字填入欄位</h3>
-        <p data-en="While reviewing, tap text on the card image to drop it into the right field — no retyping.">校對時直接點名片影像上的文字,就能帶入對應欄位,不用重打。</p>
-        <div class="vtags">
-          <span class="vtag live"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.5 19a8.5 8.5 0 0 1 17 0z"/><path d="M8.2 12.2 6.4 9.2M15.8 12.2l1.8-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span data-en="Android 1.1.0+">Android 1.1.0 起</span></span>
-          <span class="vtag live"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.62c-.02-2.33 1.9-3.45 1.99-3.5-1.08-1.59-2.77-1.8-3.37-1.83-1.43-.15-2.8.84-3.53.84-.73 0-1.85-.82-3.04-.8-1.56.02-3 .91-3.81 2.31-1.63 2.82-.42 7 1.17 9.29.78 1.12 1.7 2.38 2.91 2.33 1.17-.05 1.61-.75 3.02-.75 1.41 0 1.81.75 3.04.73 1.26-.02 2.05-1.14 2.82-2.27.89-1.3 1.25-2.56 1.27-2.62-.03-.01-2.43-.93-2.45-3.7zM14.06 5.77c.64-.78 1.08-1.86.96-2.94-.93.04-2.05.62-2.72 1.39-.6.69-1.12 1.79-.98 2.85 1.03.08 2.09-.53 2.74-1.3z"/></svg><span data-en="iOS 1.4.6+">iOS 1.4.6 起</span></span>
-        </div>
-      </li>
-    </ol>
-  </div>
-</section>
 
 <section class="section" id="features">
   <div class="wrap">
 
     <div class="feat reveal">
       <div class="txt">
-        <span class="eyebrow" data-en="Scan &amp; recognize">掃描即辨識</span>
+        <span class="eyebrow" data-en="01 / A card in your hand">01 / 剛收到的那張名片</span>
         <h2 data-en="Point at a card. Pianke does the rest.">對準名片,剩下交給片刻。</h2>
         <p data-en="It auto-detects the edges, straightens the image, then recognizes the text and parses it into fields — all on-device. Got it wrong? Just edit, or fix the raw text and re-parse.">自動偵測邊緣、轉正校正,接著在本機辨識文字並解析成欄位。認錯了?直接改,或編輯原始文字重新解析。</p>
         <ul class="flist">
@@ -775,8 +802,8 @@
 
     <div class="feat rev reveal">
       <div class="txt">
-        <span class="eyebrow" data-en="Organize &amp; search">整理 · 搜尋</span>
-        <h2 data-en="Cards group themselves by company.">名片自動依公司分組。</h2>
+        <span class="eyebrow" data-en="02 / Find the person again">02 / 想找人的那一刻</span>
+        <h2 data-en="Remember the company. Find the person.">記得公司，就找得到人。</h2>
         <p data-en="The library collects colleagues from one company into a single card, so your network reads at a glance. Search instantly by name, company, phone, email, or your own tags.">名片庫把同公司的人收在一張卡片裡,一眼看清人脈。用姓名、公司、電話、Email 或你自訂的標籤,即時全文搜尋。</p>
         <ul class="flist">
           <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><span data-en="Auto-grouped by company; blank ones go to “No company”">依公司自動分群,無公司歸「未分類」</span></li>
@@ -791,6 +818,16 @@
       </div>
     </div>
 
+
+    <div class="feat followup reveal">
+      <div class="txt">
+        <span class="eyebrow" data-en="03 / Keep the conversation going">03 / 讓話題，接得下去</span>
+        <h2 data-en-html="You met.<br>Remember what comes next.">不只記得名字，<br>也記得下次聊什麼。</h2>
+        <p data-en="Add a note about where you met and what you discussed. Set a follow-up reminder, so the next conversation starts with a little context.">在哪場展會認識、聊過什麼合作，順手記在備註裡。再設定跟進提醒，下一次聯絡，多一點熟悉。</p>
+        <div class="meeting-note"><span data-en="A note to your future self">留給下次見面的自己</span><p data-en="Met at the expo. Send the product introduction next week.">展會上聊過，下週寄產品介紹。</p><small data-en="Illustrative note · demo data">備註示意 · 示範資料</small></div>
+      </div>
+      <div class="art"><div class="device"><div class="scr"><img src="img/shot-08-note-reminder.webp" width="600" height="1200" loading="lazy" decoding="async" alt="片刻 Android 實機畫面：備註欄與跟進提醒選項，使用示範資料。" data-en-alt="Real Pianke Android screen with note field and follow-up reminder options, using demo data."></div></div></div>
+    </div>
   </div>
 </section>
 
@@ -949,6 +986,137 @@
   </div>
 </section>
 
+<section class="proof">
+  <div class="wrap proof-row">
+    <div class="pf"><b>0</b><span data-en="bytes of your cards uploaded">位元組名片資料上傳</span></div>
+    <div class="pf"><b>0</b><span data-en="internet permissions (Android)">項網路權限(Android 版)</span></div>
+    <div class="pf"><b>0</b><span data-en="accounts to sign up for">個需要註冊的帳號</span></div>
+    <div class="pf"><b data-en="US$14.99">NT$490</b><span data-en="Pro, one-time · no subscription">Pro 一次買斷 · 不訂閱</span></div>
+  </div>
+</section>
+
+<section class="band" id="privacy">
+  <div class="wrap">
+    <span class="eyebrow" data-en="Why Pianke">為什麼選片刻</span>
+    <h2 data-en-html='Your cards stay <span class="c">under your control</span>.'>你的名片,<span class="c">由你決定怎麼分享</span>。</h2>
+    <p class="sub" data-en="Recognition and storage happen on your phone, with no automatic upload or account. Android does not request internet permission; sharing and backups use files you choose to export.">辨識與儲存都在手機完成,不自動上傳、不需帳號。Android 版不申請網路權限;分享與備份,則由你自行匯出檔案。</p>
+
+    <details class="privacy-details">
+      <summary data-en="How on-device processing works (Android)">看看裝置端如何處理（Android）</summary>
+    <div class="flow">
+      <div class="ln"><span class="k" data-en="Android · on-device processing">Android 版 · 裝置端處理流程</span></div>
+      <div class="ln"><span class="k" data-en="Camera">相機</span><span>→</span><span data-en="on-device ML Kit OCR">ML Kit 裝置端 OCR</span><span>→</span><span data-en="rule-based parse">規則式解析</span><span>→</span><span class="k" data-en="local Room DB">本機 Room 資料庫</span></div>
+      <div class="ln"><span class="z" data-en="# share contacts by exporting vCard / CSV yourself"># 分享聯絡人時,由你自行匯出 vCard / CSV</span></div>
+      <div class="ln"><span class="ok" data-en="↑ bytes uploaded: 0 · network requests: 0 · accounts: none">↑ 上傳位元組:0　·　網路請求:0　·　帳號:無</span></div>
+    </div>
+
+    </details>
+    <div class="stats">
+      <div class="stat"><b>100%</b><span data-en="on-device recognition & storage">本機辨識與儲存</span></div>
+      <div class="stat"><b data-en="CN · EN">中 · 英</b><span data-en="offline OCR support">離線 OCR 支援</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S NEW — newest first. On each release: move the old spotlight into the log, put the new
+     feature in .spot, and tag every item with the FIRST Android / iOS version that supports it.
+     .vtag.live = that version is live in the store; .vtag.soon = built but not yet released.
+     Never mark a version .live before it is actually downloadable. -->
+<section class="section" id="new">
+  <div class="wrap">
+    <span class="eyebrow" data-en="What's new">新功能</span>
+
+    <article class="spot reveal">
+      <div class="txt">
+        <div class="spot-top"><span class="newtag">NEW</span><span class="wdate">2026.09</span><span class="protag">Pro</span></div>
+        <h3 data-en-html="Card Report<br>Back from the trip, report done in one tap.">名片報告<br>出差回來,報告一鍵產生。</h3>
+        <p data-en="Pick the cards from a trip and Pianke assembles a trip / visit report — on your phone, like everything else. Nothing is uploaded.">勾選這趟拿到的名片,片刻幫你整理成一份出差/拜訪結案報告。和掃描一樣,全程在手機本機完成,不上傳。</p>
+        <ul class="flist">
+          <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><span data-en="PDF + CSV in one go: the PDF to file or forward, the CSV for Excel or your CRM">一次輸出 PDF + CSV:PDF 直接交報告,CSV 進 Excel 或 CRM</span></li>
+          <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><span data-en="Card photos (front and back), contact details, per-company stats and a summary">附名片照片(正反面)、聯絡資訊、拜訪公司統計與摘要</span></li>
+          <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><span data-en="Preview it in the app, then share or save it to a folder">在 App 裡先預覽,再分享或存到資料夾</span></li>
+        </ul>
+        <div class="vtags">
+          <span class="vtag live"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.5 19a8.5 8.5 0 0 1 17 0z"/><path d="M8.2 12.2 6.4 9.2M15.8 12.2l1.8-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span data-en="Android 1.5.2+ · available">Android 1.5.2 起 · 已上架</span></span>
+          <span class="vtag soon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.62c-.02-2.33 1.9-3.45 1.99-3.5-1.08-1.59-2.77-1.8-3.37-1.83-1.43-.15-2.8.84-3.53.84-.73 0-1.85-.82-3.04-.8-1.56.02-3 .91-3.81 2.31-1.63 2.82-.42 7 1.17 9.29.78 1.12 1.7 2.38 2.91 2.33 1.17-.05 1.61-.75 3.02-.75 1.41 0 1.81.75 3.04.73 1.26-.02 2.05-1.14 2.82-2.27.89-1.3 1.25-2.56 1.27-2.62-.03-.01-2.43-.93-2.45-3.7zM14.06 5.77c.64-.78 1.08-1.86.96-2.94-.93.04-2.05.62-2.72 1.39-.6.69-1.12 1.79-.98 2.85 1.03.08 2.09-.53 2.74-1.3z"/></svg><span data-en="iOS 1.4.7 · coming soon">iOS 1.4.7 · 即將推出</span></span>
+        </div>
+        <p class="fine" data-en="A Pro feature; the free version makes a watermarked preview.">Pro 功能;免費版可產生帶浮水印的預覽版。</p>
+      </div>
+      <div class="art">
+        <div class="phone"><div class="screen">
+          <div class="s-status"><span>9:41</span><span>▮▮▮ 100%</span></div>
+          <div class="s-bar">
+            <span class="s-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 5l-7 7 7 7"/></svg></span>
+            <span class="t" style="font-size:5.6cqw" data-en="Report preview">報告預覽</span>
+            <span class="s-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5 15.4 17.5M15.4 6.5 8.6 10.5"/></svg></span>
+          </div>
+          <div class="s-scroll">
+            <div class="rp-page">
+              <div class="rp-h" data-en="Trip report">出差拜訪報告</div>
+              <div class="rp-sub" data-en="Sep 15–18, 2026 · Tokyo expo">2026/09/15–09/18 · 東京展會</div>
+              <div class="rp-stats">
+                <div><b>12</b><span data-en="cards">張名片</span></div>
+                <div><b>7</b><span data-en="companies">家公司</span></div>
+              </div>
+              <div class="rp-lb" data-en="COMPANIES">拜訪公司</div>
+              <div class="rp-row"><span data-en="TSMC">台灣積體電路製造</span><i>3</i></div>
+              <div class="rp-row"><span data-en="HTC">宏達國際電子</span><i>2</i></div>
+              <div class="rp-row"><span data-en="5 other companies">其他 5 家公司</span><i>7</i></div>
+              <div class="rp-lb" data-en="CONTACTS">聯絡人</div>
+              <div class="rp-card"><div class="tb"></div><div><div class="nm" data-en="David Wang">王大明</div><div class="co" data-en="Sales Manager · TSMC">業務經理 · 台灣積體電路製造</div></div></div>
+              <div class="rp-card"><div class="tb b"></div><div><div class="nm" data-en="Yen-Ting Lin">林彥廷</div><div class="co" data-en="Sr. Firmware Engineer · HTC">資深韌體工程師 · 宏達國際電子</div></div></div>
+            </div>
+          </div>
+          <div class="rp-act"><span class="o" data-en="Save">存到資料夾</span><span class="p" data-en="Share PDF">分享 PDF</span></div>
+        </div></div>
+      </div>
+    </article>
+
+    <ol class="log">
+      <li class="reveal wide">
+        <span class="wdate">2026.10</span>
+        <h3 data-en="Now on iPhone and iPad">iPhone / iPad 版上架</h3>
+        <p data-en="Offline recognition, company grouping, tags, two-sided and batch scanning, encrypted backup — all on iPhone and iPad. Backups move between Android and iOS, so switching phones is painless.">離線辨識、公司分組、標籤、雙面與批次掃描、加密備份,iPhone / iPad 上都有。備份檔與 Android 版互通,換手機平台也帶得走。</p>
+        <div class="vtags">
+          <span class="vtag live"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.62c-.02-2.33 1.9-3.45 1.99-3.5-1.08-1.59-2.77-1.8-3.37-1.83-1.43-.15-2.8.84-3.53.84-.73 0-1.85-.82-3.04-.8-1.56.02-3 .91-3.81 2.31-1.63 2.82-.42 7 1.17 9.29.78 1.12 1.7 2.38 2.91 2.33 1.17-.05 1.61-.75 3.02-.75 1.41 0 1.81.75 3.04.73 1.26-.02 2.05-1.14 2.82-2.27.89-1.3 1.25-2.56 1.27-2.62-.03-.01-2.43-.93-2.45-3.7zM14.06 5.77c.64-.78 1.08-1.86.96-2.94-.93.04-2.05.62-2.72 1.39-.6.69-1.12 1.79-.98 2.85 1.03.08 2.09-.53 2.74-1.3z"/></svg><span data-en="iOS 1.4.6+ · available">iOS 1.4.6 起 · 已上架</span></span>
+        </div>
+      </li>
+      <li class="reveal">
+        <h3 data-en="Tax ID field">統一編號欄位</h3>
+        <p data-en="The company tax ID is picked up while scanning, is searchable, and goes out with vCard and CSV exports.">掃描時自動擷取統一編號,可搜尋,並一起匯出到 vCard 與 CSV。</p>
+        <div class="vtags">
+          <span class="vtag live"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.5 19a8.5 8.5 0 0 1 17 0z"/><path d="M8.2 12.2 6.4 9.2M15.8 12.2l1.8-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span data-en="Android 1.4.6+">Android 1.4.6 起</span></span>
+          <span class="vtag live"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.62c-.02-2.33 1.9-3.45 1.99-3.5-1.08-1.59-2.77-1.8-3.37-1.83-1.43-.15-2.8.84-3.53.84-.73 0-1.85-.82-3.04-.8-1.56.02-3 .91-3.81 2.31-1.63 2.82-.42 7 1.17 9.29.78 1.12 1.7 2.38 2.91 2.33 1.17-.05 1.61-.75 3.02-.75 1.41 0 1.81.75 3.04.73 1.26-.02 2.05-1.14 2.82-2.27.89-1.3 1.25-2.56 1.27-2.62-.03-.01-2.43-.93-2.45-3.7zM14.06 5.77c.64-.78 1.08-1.86.96-2.94-.93.04-2.05.62-2.72 1.39-.6.69-1.12 1.79-.98 2.85 1.03.08 2.09-.53 2.74-1.3z"/></svg><span data-en="iOS 1.4.6+">iOS 1.4.6 起</span></span>
+        </div>
+      </li>
+      <li class="reveal">
+        <h3 data-en="Tag management">自訂標籤管理</h3>
+        <p data-en="Tag cards as client, vendor and so on, then filter by tag. Add, rename, delete and reorder tags.">幫名片貼上客戶、廠商等標籤,依標籤篩選;標籤可新增、改名、刪除、排序。</p>
+        <div class="vtags">
+          <span class="vtag live"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.5 19a8.5 8.5 0 0 1 17 0z"/><path d="M8.2 12.2 6.4 9.2M15.8 12.2l1.8-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span data-en="Android 1.4.0+">Android 1.4.0 起</span></span>
+          <span class="vtag live"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.62c-.02-2.33 1.9-3.45 1.99-3.5-1.08-1.59-2.77-1.8-3.37-1.83-1.43-.15-2.8.84-3.53.84-.73 0-1.85-.82-3.04-.8-1.56.02-3 .91-3.81 2.31-1.63 2.82-.42 7 1.17 9.29.78 1.12 1.7 2.38 2.91 2.33 1.17-.05 1.61-.75 3.02-.75 1.41 0 1.81.75 3.04.73 1.26-.02 2.05-1.14 2.82-2.27.89-1.3 1.25-2.56 1.27-2.62-.03-.01-2.43-.93-2.45-3.7zM14.06 5.77c.64-.78 1.08-1.86.96-2.94-.93.04-2.05.62-2.72 1.39-.6.69-1.12 1.79-.98 2.85 1.03.08 2.09-.53 2.74-1.3z"/></svg><span data-en="iOS 1.4.6+">iOS 1.4.6 起</span></span>
+        </div>
+      </li>
+      <li class="reveal">
+        <h3 data-en="Two-sided cards · batch scan (Pro)">雙面名片 · 批次連拍(Pro)</h3>
+        <p data-en="Front and back merge into one contact; shoot a whole stack in a row and each card gets its own draft.">正反面合併成同一位聯絡人;整疊名片一次連拍,每張自動建好草稿。</p>
+        <div class="vtags">
+          <span class="vtag live"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.5 19a8.5 8.5 0 0 1 17 0z"/><path d="M8.2 12.2 6.4 9.2M15.8 12.2l1.8-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span data-en="Android 1.3.0+">Android 1.3.0 起</span></span>
+          <span class="vtag live"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.62c-.02-2.33 1.9-3.45 1.99-3.5-1.08-1.59-2.77-1.8-3.37-1.83-1.43-.15-2.8.84-3.53.84-.73 0-1.85-.82-3.04-.8-1.56.02-3 .91-3.81 2.31-1.63 2.82-.42 7 1.17 9.29.78 1.12 1.7 2.38 2.91 2.33 1.17-.05 1.61-.75 3.02-.75 1.41 0 1.81.75 3.04.73 1.26-.02 2.05-1.14 2.82-2.27.89-1.3 1.25-2.56 1.27-2.62-.03-.01-2.43-.93-2.45-3.7zM14.06 5.77c.64-.78 1.08-1.86.96-2.94-.93.04-2.05.62-2.72 1.39-.6.69-1.12 1.79-.98 2.85 1.03.08 2.09-.53 2.74-1.3z"/></svg><span data-en="iOS 1.4.6+">iOS 1.4.6 起</span></span>
+        </div>
+      </li>
+      <li class="reveal">
+        <h3 data-en="Tap the card to fill a field">點名片文字填入欄位</h3>
+        <p data-en="While reviewing, tap text on the card image to drop it into the right field — no retyping.">校對時直接點名片影像上的文字,就能帶入對應欄位,不用重打。</p>
+        <div class="vtags">
+          <span class="vtag live"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.5 19a8.5 8.5 0 0 1 17 0z"/><path d="M8.2 12.2 6.4 9.2M15.8 12.2l1.8-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span data-en="Android 1.1.0+">Android 1.1.0 起</span></span>
+          <span class="vtag live"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.62c-.02-2.33 1.9-3.45 1.99-3.5-1.08-1.59-2.77-1.8-3.37-1.83-1.43-.15-2.8.84-3.53.84-.73 0-1.85-.82-3.04-.8-1.56.02-3 .91-3.81 2.31-1.63 2.82-.42 7 1.17 9.29.78 1.12 1.7 2.38 2.91 2.33 1.17-.05 1.61-.75 3.02-.75 1.41 0 1.81.75 3.04.73 1.26-.02 2.05-1.14 2.82-2.27.89-1.3 1.25-2.56 1.27-2.62-.03-.01-2.43-.93-2.45-3.7zM14.06 5.77c.64-.78 1.08-1.86.96-2.94-.93.04-2.05.62-2.72 1.39-.6.69-1.12 1.79-.98 2.85 1.03.08 2.09-.53 2.74-1.3z"/></svg><span data-en="iOS 1.4.6+">iOS 1.4.6 起</span></span>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
 <!-- PRICING — when the store price changes (incl. any founding/launch discount), update this section
      AND the price in the .proof stat row under the hero in the same change. -->
 <section class="section" id="pricing">
@@ -1058,8 +1226,8 @@
 <section class="final" id="get">
   <div class="wrap">
     <span class="eyebrow" style="justify-content:center" data-en="Get started">開始使用</span>
-    <h2 data-en="Keep your cards in your own hands.">把名片,握在自己手裡。</h2>
-    <p data-en="Pianke is a fully offline card scanner that collects no data. Your network belongs to you alone.">片刻是一支完全離線、不收集任何資料的名片掃描 App。你的人脈,只屬於你。</p>
+    <h2 data-en="Try your first card for free.">先免費試掃一張名片。</h2>
+    <p data-en="Download Pianke, scan a card and check the recognized details before saving. Keep up to 15 cards for free; upgrade to one-time Pro when you need more.">下載片刻,拍一張名片,確認辨識結果後儲存。免費版最多保存 15 張,名片多了再一次買斷 Pro。</p>
     <div class="stores" style="justify-content:center">
       <a class="store" href="https://play.google.com/store/apps/details?id=com.pianke.cardscanner&amp;referrer=utm_source%3Dsite-home%26utm_medium%3Dfinal-cta"><img src="img/badge-google-play-zh.png" data-en-src="img/badge-google-play-en.png" alt="立即下載,Google Play" data-en-alt="Get it on Google Play" width="162" height="48" loading="lazy" decoding="async"></a>
       <a class="store" href="https://apps.apple.com/tw/app/id6813446077"><img src="img/badge-app-store-zh.svg" data-en-src="img/badge-app-store-en.svg" alt="從 App Store 下載" data-en-alt="Download on the App Store" width="131" height="48" loading="lazy" decoding="async"></a>

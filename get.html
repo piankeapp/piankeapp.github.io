@@ -11,21 +11,30 @@
   @media (prefers-color-scheme: dark) { :root { --paper: #0f1716; --ink: #e8efed; --muted: #9db0ab; --teal: #6ff6fe; } }
   html, body { margin: 0; background: var(--paper); color: var(--ink); }
   body { font-family: "Segoe UI", system-ui, -apple-system, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif; display: grid; place-items: center; min-height: 100vh; padding: 24px 16px; box-sizing: border-box; text-align: center; }
-  h1 { font-size: 1.5rem; margin: 0 0 8px; }
-  p { color: var(--muted); margin: 0 0 24px; }
+  main { width: min(100%, 560px); }
+  .brand { font-weight: 700; letter-spacing: .06em; color: var(--teal); margin-bottom: 28px; }
+  h1 { font-size: clamp(1.9rem, 7vw, 2.8rem); line-height: 1.3; margin: 0 0 18px; }
+  p { color: var(--muted); line-height: 1.7; margin: 0 0 24px; }
+  .free { border-block: 1px solid var(--muted); padding: 16px 0; font-weight: 650; color: var(--ink); }
+  .detail { font-size: .86rem; margin-top: 18px; }
   .row { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
   a.btn { display: inline-block; padding: 13px 22px; border-radius: 999px; background: var(--cyan); color: var(--on-cyan); font-weight: 650; text-decoration: none; }
   a.home { display: inline-block; margin-top: 22px; color: var(--teal); }
+  a:focus-visible { outline: 3px solid var(--teal); outline-offset: 5px; }
 </style>
 </head>
 <body>
 <main>
-  <h1>片刻 Pianke</h1>
-  <p>完全離線的名片掃描:不連網、不需帳號、不訂閱。</p>
+  <p class="brand">片刻 Pianke · 離線名片掃描</p>
+  <h1 id="benefit">名片拍下來,人脈找得到。</h1>
+  <p id="promise">拍照、確認欄位、儲存。把中英文名片變成可搜尋的聯絡人,不需帳號、不上傳。</p>
+  <p class="free">免費試掃第一張 · 最多保存 15 張<br>需要更多,再一次買斷 Pro</p>
+  <p id="status" role="status">選擇你的手機版本,開始試掃。</p>
   <div class="row">
     <a class="btn" id="ios" href="https://apps.apple.com/app/id6813446077">App Store 下載</a>
     <a class="btn" id="android" href="https://play.google.com/store/apps/details?id=com.pianke.cardscanner">Google Play 下載</a>
   </div>
+  <p class="detail" id="detail">Android 8.0 以上 · iPhone / iPad: iOS 17 以上<br>無廣告 · 不訂閱 · 售價以商店顯示為準</p>
   <a class="home" href="index.html">看產品介紹</a>
 </main>
 <script>
@@ -49,12 +58,23 @@
       encodeURIComponent(referrer);
     var appStore = "https://apps.apple.com/app/id6813446077";
     document.getElementById("android").href = play;
+    var campaigns = {
+      a: ["名片拍下來,人脈找得到。", "拍照、確認欄位、儲存。下次找人不用再翻名片,中英文辨識全程在手機完成。"],
+      b: ["交換名片,不用交出人脈。", "名片辨識與儲存都在手機完成,不需帳號、不自動上傳。Android 版不申請網路權限,分享由你自行匯出。"],
+      c: ["展會名片,整理成報告。", "Android 版可將名片整理成 PDF / CSV 報告:免費版提供浮水印預覽,完整報告需 Pro。iOS 尚未提供名片報告。"]
+    };
+    if (Object.prototype.hasOwnProperty.call(campaigns, tag)) {
+      document.getElementById("benefit").textContent = campaigns[tag][0];
+      document.getElementById("promise").textContent = campaigns[tag][1];
+    }
 
     var ua = navigator.userAgent;
     var iOS = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
     var android = /Android/.test(ua);
-    if (iOS) location.replace(appStore);
-    else if (android) location.replace(play);
+    if (iOS || android) {
+      document.getElementById("status").textContent = "正在開啟" + (iOS ? " App Store" : " Google Play") + "。若未自動開啟,請點下方下載。";
+      location.replace(iOS ? appStore : play);
+    }
   })();
 </script>
 </body>
