@@ -82,7 +82,7 @@
   </header>
 
   <div class="wrap">
-    <div class="updated">Last updated / 最後更新:2026-07-03</div>
+    <div class="updated">Last updated / 最後更新:2026-10-08</div>
     <div class="callout"><b>片刻 (Pianke) runs entirely on your device and has no internet access.</b> It does not collect, transmit, or upload any of your data — there are no accounts, no servers, and no cloud. — <b>本 App 完全在你的裝置上運作、沒有網路權限,不收集、不傳輸、不上傳你的任何資料;沒有帳號、沒有伺服器、沒有雲端。</b></div>
 
     <!-- ============ English ============ -->
@@ -137,6 +137,7 @@
         <thead><tr><th>Permission</th><th>Why</th></tr></thead>
         <tbody>
           <tr><td><code>POST_NOTIFICATIONS</code></td><td>Show the local follow-up reminder you set. No network.</td></tr>
+          <tr><td><code>RECORD_AUDIO</code></td><td>Optional voice note: the microphone is used only while you tap the mic button to dictate a note. Speech is recognised on the phone by Android's on-device recognizer; nothing is recorded, stored or sent. If the offline speech pack is missing, the app never downloads it — you install it yourself in system settings.</td></tr>
           <tr><td><code>RECEIVE_BOOT_COMPLETED</code></td><td>Re-arm your pending reminders after the phone restarts (alarms are cleared on reboot).</td></tr>
           <tr><td><code>USE_BIOMETRIC</code>, <code>USE_FINGERPRINT</code></td><td>Optional app lock, via Android's system prompt. The app never receives your biometric data.</td></tr>
           <tr class="removed"><td><code>INTERNET</code>, <code>ACCESS_NETWORK_STATE</code></td><td><b>Removed.</b> These were pulled in transitively by a Google library; we explicitly strip them so the shipped app cannot use the network.</td></tr>
@@ -213,6 +214,7 @@
         <thead><tr><th>權限</th><th>用途</th></tr></thead>
         <tbody>
           <tr><td><code>POST_NOTIFICATIONS</code></td><td>顯示你設定的本機跟進提醒。不使用網路。</td></tr>
+          <tr><td><code>RECORD_AUDIO</code></td><td>選用的語音備註：只在你按下麥克風按鈕口述備註的期間使用麥克風。語音由手機上的 Android 離線辨識轉成文字；不錄音、不儲存、不上傳。若缺少離線語音包，App 不會自行下載，由你在系統設定中自行安裝。</td></tr>
           <tr><td><code>RECEIVE_BOOT_COMPLETED</code></td><td>手機重開機後重新排定你尚未觸發的提醒(鬧鐘在重開機時會被清除)。</td></tr>
           <tr><td><code>USE_BIOMETRIC</code>、<code>USE_FINGERPRINT</code></td><td>選用的 App 鎖,透過 Android 系統提示。App 不會取得你的生物特徵資料。</td></tr>
           <tr class="removed"><td><code>INTERNET</code>、<code>ACCESS_NETWORK_STATE</code></td><td><b>已移除。</b> 這些原是被某個 Google 函式庫間接帶入;我們明確移除,使上架版本無法使用網路。</td></tr>
