@@ -44,12 +44,16 @@
   // The app's text shares (Share to LINE) end with /get?share (a scanned card) or /get?mycard (the
   // user's own card); those are shares, not print, and are labelled as such.
   // The desktop QR on the home page points at /get?site, so site scans are counted apart from print.
+  // The app's card report carries a QR to /get?report (a paid report) or /get?preview (the free,
+  // watermarked preview): reports get forwarded, and these count the installs they bring.
   (function () {
     var tag = (location.search.replace(/^\?/, "").match(/^[a-z0-9-]{1,12}$/) || [""])[0];
     var known = {
       share: "utm_source=card-share&utm_medium=share&utm_campaign=app-share",
       mycard: "utm_source=mycard-share&utm_medium=share&utm_campaign=app-share",
-      site: "utm_source=site-home&utm_medium=qr&utm_campaign=site"
+      site: "utm_source=site-home&utm_medium=qr&utm_campaign=site",
+      report: "utm_source=pdf-report&utm_medium=qr&utm_campaign=card-report",
+      preview: "utm_source=pdf-preview&utm_medium=qr&utm_campaign=card-report"
     };
     var referrer = Object.prototype.hasOwnProperty.call(known, tag)
       ? known[tag]
