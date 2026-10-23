@@ -345,6 +345,11 @@
   :root[data-theme="dark"] .pp-note { background: color-mix(in srgb, var(--cyan) 8%, var(--paper)); }
   .pp-note svg { flex: none; width: 20px; height: 20px; margin-top: 2px; color: var(--teal); }
   .price-fine { font-size: .82rem; color: var(--muted); margin: 12px 0 0; }
+  /* Time-limited sale notes: hidden by script once data-sale-until passes. */
+  .sale { display: inline-flex; align-items: center; gap: 8px; margin: 14px 0 0; padding: 7px 14px; border-radius: 999px; font-size: .9rem; font-weight: 650; color: var(--teal); background: color-mix(in srgb, var(--cyan) 28%, transparent); text-decoration: none; }
+  .sale b { font-variant-numeric: tabular-nums; }
+  .sale-note { margin: 10px 0 0; font-size: .9rem; font-weight: 650; color: var(--cyan); }
+  .sale-note small { display: block; font-weight: 500; color: #a9c7c0; }
 
   .compare { margin-top: clamp(48px, 7vw, 80px); display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(24px, 5vw, 64px); align-items: start; }
   .compare h3 { font-size: clamp(1.4rem, 2.6vw, 1.9rem); font-weight: 750; }
@@ -767,6 +772,7 @@
         <div class="qr"><img src="img/qr-get.svg" alt="" width="88" height="88"><span data-en="Scan with your phone to download">手機掃描下載</span></div>
       </div>
       <p class="start-note" data-en-html='Free download · Keep up to 15 cards<br><a href="#pricing">Need more? Pro is a one-time purchase.</a>'>免費下載 · 最多保存 15 張<br><a href="#pricing">名片多了，再一次買斷 Pro。</a></p>
+      <a class="sale" href="#pricing" data-sale-until="2027-01-01T00:00:00+08:00" data-en-html="Android sale: Pro about 20% off, until Dec 31">Android 限時特價：Pro <b>NT$390</b>（原價 NT$490）· 至 12/31</a>
       <a class="more" href="#features"><span data-en="Follow a card’s journey">看看一張名片的旅程</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 5v14m-6-6 6 6 6-6"/></svg></a>
     </div>
   </div>
@@ -1193,6 +1199,7 @@
       <article class="plan pro reveal">
         <h3 data-en="Pro Lifetime">Pro 終身版</h3>
         <div class="price"><b data-en="US$14.99">NT$490</b><span data-en="one-time · no subscription">一次買斷 · 不訂閱</span></div>
+        <p class="sale-note" data-sale-until="2027-01-01T00:00:00+08:00" data-en-html="Android sale: about 20% off until Dec 31.<small>iPhone stays US$14.99.</small>">Android 限時特價 NT$390,至 12/31。<small>iPhone 版維持 NT$490。</small></p>
         <p class="lede" data-en="Everything in Free, plus:">包含免費版全部功能,再加上:</p>
         <ul class="plist">
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-en="Unlimited cards">名片數量不限</span></li>
@@ -1364,6 +1371,12 @@
     frame.querySelector(".video-play").addEventListener("click", () => vid.play());
     vid.addEventListener("play", () => frame.classList.add("started"));
   }
+</script>
+<script>
+  // Hide time-limited sale notes once their end (data-sale-until, Taiwan time) has passed.
+  document.querySelectorAll("[data-sale-until]").forEach(function (el) {
+    if (Date.now() >= Date.parse(el.getAttribute("data-sale-until"))) el.remove();
+  });
 </script>
 </body>
 </html>
