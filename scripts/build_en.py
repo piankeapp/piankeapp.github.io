@@ -284,6 +284,8 @@ def build(src_text):
     en = "".join(t.out)
     en = english_main_ld(en)
     en = set_faq_ld(en)
+    # App Analytics campaign tag: attribute English-page downloads separately (scripts/site_campaign_links.py)
+    en = en.replace("&ct=site-index&", "&ct=site-en-index&")
     return zh, en
 
 
