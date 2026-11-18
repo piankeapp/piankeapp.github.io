@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-itunes-app" content="app-id=6813446077">
+<title>離線名片掃描 App 怎麼選?五個判斷標準,和自己就能做的檢查(2026)</title>
+<meta name="description" content="想找不上傳雲端、不用註冊的名片掃描 App?五個判斷標準:辨識在哪裡做、要不要帳號、網路權限與隱私標籤、訂閱還是買斷、資料帶不帶得走。附飛航模式自我檢查步驟。">
+<link rel="canonical" href="https://piankeapp.github.io/offline-business-card-app-guide.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="離線名片掃描 App 怎麼選?五個判斷標準">
+<meta property="og:description" content="想找不上傳雲端、不用註冊的名片掃描 App?五個判斷標準:辨識在哪裡做、要不要帳號、網路權限與隱私標籤、訂閱還是買斷、資料帶不帶得走。附飛航模式自我檢查步驟。">
+<meta property="og:url" content="https://piankeapp.github.io/offline-business-card-app-guide.html">
+<meta property="og:image" content="https://piankeapp.github.io/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="片刻 Pianke">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="index, follow">
+
+<style>
+  :root {
+    --paper: #faf9f5;
+    --paper-2: #f0eee7;
+    --panel: #fffefb;
+    --ink: #14201d;
+    --muted: #5c6b66;
+    --teal: #0a4f4a;
+    --cyan: #6ff6fe;
+    --on-cyan: #04312f;
+    --line: rgba(10, 79, 74, .14);
+    --line-strong: rgba(10, 79, 74, .28);
+    --warm: #8a5a12;
+    --warm-bg: rgba(214, 158, 46, .12);
+    --sans: "Segoe UI", system-ui, -apple-system, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    --mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
+    --maxw: 760px;
+  }
+  :root[data-theme="dark"] {
+    --paper: #0d1c19;
+    --paper-2: #0a1613;
+    --panel: #14231f;
+    --ink: #e3ebe8;
+    --muted: #93aaa4;
+    --teal: #4cd9e2;
+    --cyan: #6ff6fe;
+    --line: rgba(111, 246, 254, .13);
+    --line-strong: rgba(111, 246, 254, .28);
+    --warm: #e8c477;
+    --warm-bg: rgba(232, 196, 119, .10);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; font-family: var(--sans); color: var(--ink); background: var(--paper);
+    line-height: 1.75; -webkit-font-smoothing: antialiased;
+    transition: background .4s ease, color .4s ease;
+  }
+  .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+  .wrap.nav-row { max-width: 1160px; }
+  a { color: var(--teal); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  h1, h2, h3 { text-wrap: balance; letter-spacing: -.02em; line-height: 1.22; }
+  h1 { font-size: clamp(1.72rem, 4.4vw, 2.5rem); font-weight: 800; margin: 18px 0 0; line-height: 1.14; }
+  h2 { font-size: clamp(1.18rem, 2.4vw, 1.42rem); font-weight: 750; margin: 52px 0 14px; }
+  h3 { font-size: 1.02rem; font-weight: 700; margin: 26px 0 8px; }
+  p { margin: 16px 0; }
+  ul, ol { margin: 16px 0; padding-left: 1.35em; }
+  li { margin: 8px 0; }
+  strong { font-weight: 700; }
+  code { font-family: var(--mono); font-size: .88em; background: var(--paper-2); padding: 2px 6px; border-radius: 5px; }
+
+  .eyebrow { font-size: .74rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--teal); display: inline-flex; align-items: center; gap: 9px; }
+  .eyebrow::before { content: ""; width: 22px; height: 2px; background: var(--cyan); display: inline-block; }
+
+  .btn { display: inline-flex; align-items: center; gap: 9px; font: inherit; font-weight: 650; padding: 13px 22px; border-radius: 999px; border: 0; cursor: pointer; text-decoration: none; font-size: .98rem; transition: transform .15s ease, box-shadow .15s ease; }
+  .btn.primary { background: var(--teal); color: #fff; }
+  .btn.primary:hover { transform: translateY(-2px); box-shadow: 0 12px 24px -12px var(--teal); }
+  :root[data-theme="dark"] .btn.primary { background: var(--cyan); color: var(--on-cyan); }
+  .btn.ghost { background: transparent; color: var(--teal); border: 1px solid var(--line-strong); }
+  .btn.ghost:hover { border-color: var(--teal); }
+  .btn svg { width: 18px; height: 18px; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
+
+  nav { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--paper) 86%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+  nav .row { display: flex; align-items: center; justify-content: space-between; height: 66px; gap: 16px; }
+  .brand { display: flex; align-items: center; gap: 11px; font-weight: 750; font-size: 1.12rem; letter-spacing: -.01em; text-decoration: none; color: inherit; }
+  .logo { width: 34px; height: 34px; border-radius: 10px; flex: none; background: linear-gradient(150deg, #0a4f4a, #063633); display: grid; place-items: center; box-shadow: inset 0 0 0 1px rgba(255,255,255,.08); }
+  .logo span { width: 14px; height: 9px; border-radius: 2.5px; background: var(--cyan); box-shadow: 0 6px 0 -2px rgba(111,246,254,.5); }
+  .brand small { font-weight: 500; font-size: .74rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .tools { display: flex; align-items: center; gap: 8px; }
+  .toolbtn { font: inherit; font-size: .82rem; font-weight: 650; color: var(--teal); background: transparent; border: 1px solid var(--line-strong); border-radius: 999px; height: 36px; min-width: 36px; padding: 0; width: 36px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; transition: border-color .15s; }
+  .toolbtn:hover { border-color: var(--teal); }
+  .toolbtn svg { width: 18px; height: 18px; }
+  #themeBtn .sun { display: none; }
+  :root[data-theme="dark"] #themeBtn .sun { display: block; }
+  :root[data-theme="dark"] #themeBtn .moon { display: none; }
+
+  header.art { padding: clamp(32px, 6vw, 56px) 0 8px; border-bottom: 1px solid var(--line); background:
+      radial-gradient(620px 300px at 88% -30%, rgba(111,246,254,.16), transparent 60%); }
+  .meta { color: var(--muted); font-size: .86rem; margin: 20px 0 26px; }
+  .lead { font-size: 1.09rem; color: var(--muted); margin-top: 20px; }
+
+  .box { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 22px 24px; margin: 28px 0; }
+  .box.key { border-left: 4px solid var(--teal); }
+  :root[data-theme="dark"] .box.key { border-left-color: var(--cyan); }
+  .box.warn { background: var(--warm-bg); border-color: color-mix(in srgb, var(--warm) 34%, transparent); }
+  .box.warn strong { color: var(--warm); }
+  .box h3:first-child, .box p:first-child { margin-top: 0; }
+  .box > :last-child { margin-bottom: 0; }
+
+  ol.steps { list-style: none; padding: 0; counter-reset: s; }
+  ol.steps > li { counter-increment: s; position: relative; padding-left: 44px; margin: 18px 0; }
+  ol.steps > li::before {
+    content: counter(s); position: absolute; left: 0; top: 1px;
+    width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center;
+    background: var(--teal); color: #fff; font-size: .84rem; font-weight: 700;
+  }
+  :root[data-theme="dark"] ol.steps > li::before { background: var(--cyan); color: var(--on-cyan); }
+
+  .tablewrap { overflow-x: auto; margin: 24px 0; border: 1px solid var(--line); border-radius: 14px; background: var(--panel); }
+  table { border-collapse: collapse; width: 100%; min-width: 620px; font-size: .92rem; }
+  th, td { text-align: left; padding: 13px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-weight: 700; background: var(--paper-2); font-size: .85rem; }
+  tr:last-child td { border-bottom: 0; }
+
+  .cta { background: var(--panel); border: 1px solid var(--line-strong); border-radius: 20px; padding: 28px; margin: 44px 0 8px; }
+  .cta .row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
+  .note { color: var(--muted); font-size: .84rem; }
+
+  footer { border-top: 1px solid var(--line); margin-top: 56px; padding: 30px 0 44px; }
+  footer .links { display: flex; gap: 18px; flex-wrap: wrap; margin: 12px 0; font-size: .9rem; }
+  .fine { color: var(--muted); font-size: .8rem; line-height: 1.7; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-row row">
+    <a class="brand" href="index.html">
+      <span class="logo"><span></span></span>
+      片刻 Pianke<small>· 離線名片掃描</small>
+    </a>
+    <div class="tools">
+      <button class="toolbtn" id="themeBtn" aria-label="切換深色模式">
+        <svg class="moon" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A8 8 0 1 1 11.2 3a6.5 6.5 0 0 0 9.8 9.8z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6 19 19M19 5l-1.4 1.4M6.4 17.6 5 19"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<header class="art">
+  <div class="wrap">
+    <span class="eyebrow">選 App 指南・隱私</span>
+    <h1>離線名片掃描 App 怎麼選?<br>五個判斷標準,和自己就能做的檢查</h1>
+    <p class="lead">名片上印的是客戶的姓名、手機和 Email。選名片掃描 App 時,除了辨識準不準,更該先問:這些資料會不會離開你的手機?下面五個標準不限哪一款 App,每一項都附上你自己就能做的檢查方法。</p>
+    <div class="meta"><span>更新於 2026-11-18</span></div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="box key">
+    <h3>先講結論</h3>
+    <p>開<strong>飛航模式</strong>拍一張名片:還能辨識、還能存檔,辨識就是在手機上做的。再確認<strong>不用註冊帳號</strong>、<strong>付費是一次買斷還是訂閱</strong>、<strong>能不能匯出 vCard / CSV</strong>。四項都過關,就是一款資料留在你手上的名片 App。</p>
+  </div>
+
+  <h2>標準一:辨識在手機上做,還是送到伺服器</h2>
+  <p>很多名片 App 會把照片上傳到伺服器辨識,或交給人工校對。這樣準確度可能比較高,但名片照片就離開了你的手機。辨識在手機上做(裝置端 OCR)的 App,沒有網路也能用。</p>
+  <ol class="steps">
+    <li>開啟飛航模式,關掉 Wi-Fi。</li>
+    <li>打開 App,拍一張名片。</li>
+    <li>看姓名、電話、Email 有沒有辨識出來,能不能存檔。能,就是在手機上辨識;出現「請連線」或一直轉圈,就是要送到伺服器。</li>
+  </ol>
+
+  <h2>標準二:需不需要註冊帳號</h2>
+  <p>需要帳號,通常代表資料會同步到業者的雲端。不需要帳號的 App,打開就能用,名片只存在手機裡。要注意的是換手機時怎麼搬資料:最好有可以自己保管的備份檔。</p>
+
+  <h2>標準三:網路權限與隱私標籤</h2>
+  <ul>
+    <li><strong>Android:</strong>在 Google Play 的 App 頁面,往下找「關於這個應用程式」→「應用程式權限」。沒有「網路存取」,這個 App 就連不上網路。</li>
+    <li><strong>iPhone / iPad:</strong>看 App Store 頁面的「App 隱私權」標籤是否寫「未收集資料」。安裝後也可以到「設定 → 隱私權與安全性 → App 隱私權報告」,看它實際連過哪些網域。</li>
+  </ul>
+  <p>詳細步驟在〈<a href="does-your-card-app-upload-your-contacts.html">名片掃描 App 會把你的客戶名單傳到哪裡?</a>〉和〈<a href="iphone-card-scanner-privacy-check.html">iPhone 名片掃描 App 會上傳你的客戶名單嗎?</a>〉。</p>
+
+  <h2>標準四:訂閱還是一次買斷</h2>
+  <p>名片 App 常見兩種收費:按年或按月訂閱,或一次買斷。用三年算總價最清楚:訂閱制每年續費,買斷制只付一次。也要看免費版的限制是張數、功能,還是浮水印。</p>
+
+  <h2>標準五:資料帶不帶得走</h2>
+  <p>名片是你的業務資產。確認 App 能匯出 <strong>vCard</strong>(存進手機通訊錄、Google / Outlook 聯絡人)和 <strong>CSV</strong>(用 Excel 開、匯入 CRM),換手機時有備份檔可以搬。只能留在 App 裡的資料,哪天不用這個 App 就很難帶走。</p>
+
+  <h2>依情境挑</h2>
+  <ul>
+    <li><strong>偶爾收幾張:</strong>手機內建的相機文字辨識,或任一 App 的免費版通常就夠。</li>
+    <li><strong>業務、常跑展會:</strong>看有沒有批次連拍、雙面名片、依公司或日期整理成拜訪報告的功能。整理流程見〈<a href="trade-show-business-cards.html">展會收了一疊名片,回來怎麼整理?</a>〉。</li>
+    <li><strong>客戶資料敏感(醫療、金融、法務):</strong>五個標準都要過,尤其是標準一到三。</li>
+  </ul>
+
+  <h2>我們的做法:片刻 離線名片</h2>
+  <p>這是我們自己的產品,放在最後給你對照上面的標準:</p>
+  <div class="box">
+    <h3>片刻 離線名片(Pianke)基本資料</h3>
+    <ul>
+      <li><strong>平台:</strong>Android 8.0 以上;iPhone / iPad(iOS 17 以上)</li>
+      <li><strong>辨識:</strong>裝置端 OCR,中文與英文名片,飛航模式下可用</li>
+      <li><strong>網路:</strong>Android 版沒有申請網路權限;iPhone / iPad 版程式裡沒有網路程式碼</li>
+      <li><strong>帳號:</strong>不需要。沒有廣告、沒有追蹤</li>
+      <li><strong>價格:</strong>免費版可存 15 張;Pro 一次買斷 NT$490(Android 至 2026/12/31 限時 NT$390),不訂閱。價格以商店顯示為準</li>
+      <li><strong>匯出:</strong>vCard、CSV;備份檔可加密,Android 與 iPhone 互通</li>
+      <li><strong>Pro:</strong>名片數不限、批次連拍、雙面名片、PDF + CSV 拜訪報告(免費版可產生浮水印預覽)</li>
+    </ul>
+  </div>
+
+  <h2>常見問題</h2>
+  <h3>有完全離線的名片掃描 App 嗎?</h3>
+  <p>有。判斷方式是看辨識是不是在手機上完成:開飛航模式拍一張名片,如果仍然能辨識出姓名、電話並存檔,辨識就是在手機上做的。例如片刻 離線名片(Pianke)的 Android 版沒有申請網路權限,iPhone / iPad 版程式裡沒有網路程式碼,不需要帳號。</p>
+  <h3>怎麼確認名片 App 不會上傳我的名片?</h3>
+  <p>三個方法:一、飛航模式下測試掃描與存檔;二、Android 在 Google Play 的「關於這個應用程式 → 權限」看有沒有「網路存取」;三、iPhone 在 App Store 看「App 隱私權」標籤,或用「設定 → 隱私權與安全性 → App 隱私權報告」查它連過哪些網域。</p>
+  <h3>片刻 離線名片是什麼?</h3>
+  <p>片刻 離線名片(英文名 Pianke)是 Android 與 iPhone / iPad 的名片掃描 App。掃描、OCR 辨識、整理與匯出都在手機上完成,不需帳號、不上傳雲端,也沒有廣告和追蹤。可匯出 vCard、CSV,Pro 版可產生 PDF + CSV 拜訪報告。</p>
+  <h3>片刻 離線名片要多少錢?</h3>
+  <p>免費下載,免費版可保存 15 張名片,核心功能都能用。Pro 終身版一次買斷 NT$490,不是訂閱(Android 至 2026/12/31 限時 NT$390;價格以商店顯示為準)。</p>
+
+  <div class="cta">
+    <h3 style="margin-top:0">片刻 離線名片:不連網的名片掃描器</h3>
+    <p style="margin-bottom:0">在商店搜尋「片刻 離線名片」,或直接下載:</p>
+    <div class="row">
+      <a class="btn primary" href="https://apps.apple.com/tw/app/id6813446077?pt=129432514&ct=site-guide&mt=8">App Store 下載</a>
+      <a class="btn ghost" href="https://play.google.com/store/apps/details?id=com.pianke.cardscanner&amp;referrer=utm_source%3Dsite-guide%26utm_medium%3Darticle%26utm_campaign%3Dguide">Android 版(Google Play)</a>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="brand" style="font-size:1rem"><span class="logo"><span></span></span>片刻 Pianke</div>
+    <div class="links">
+      <a href="index.html">產品介紹</a>
+      <a href="iphone-card-scanner-privacy-check.html">iPhone 怎麼查</a>
+      <a href="offline-business-card-app-guide.html">選 App 指南</a>
+      <a href="privacy-policy-ios.html">隱私權政策</a>
+      <a href="https://apps.apple.com/tw/app/id6813446077&pt=129432514&ct=site-guide&mt=8">App Store</a>
+      <a href="https://play.google.com/store/apps/details?id=com.pianke.cardscanner&amp;referrer=utm_source%3Dsite-guide%26utm_medium%3Darticle-footer">Google Play</a>
+      <a href="https://www.youtube.com/@PiankeCard" rel="me">YouTube</a>
+      <a href="https://www.tiktok.com/@piankecard" rel="me">TikTok</a>
+      <a href="https://www.instagram.com/piankecard/" rel="me">Instagram</a>
+    </div>
+    <p class="fine">
+      <strong>揭露:</strong>本文由片刻 Pianke 開發團隊撰寫,文末提及本團隊開發的 App。<br>
+      <strong>商標:</strong>iPhone、App Store 為 Apple Inc. 之商標,Google Play 與 Android 為 Google LLC 之商標。本文僅為說明之引用,與 Apple、Google 無關聯、未經其背書。<br>
+      © 2026 片刻 Pianke
+    </p>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "離線名片掃描 App 怎麼選?五個判斷標準,和自己就能做的檢查(2026)",
+  "description": "想找不上傳雲端、不用註冊的名片掃描 App?五個判斷標準:辨識在哪裡做、要不要帳號、網路權限與隱私標籤、訂閱還是買斷、資料帶不帶得走。附飛航模式自我檢查步驟。",
+  "datePublished": "2026-11-18",
+  "dateModified": "2026-11-18",
+  "inLanguage": "zh-Hant-TW",
+  "mainEntityOfPage": "https://piankeapp.github.io/offline-business-card-app-guide.html",
+  "author": {
+    "@type": "Organization",
+    "name": "片刻 Pianke"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "片刻 Pianke"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "有完全離線的名片掃描 App 嗎?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "有。判斷方式是看辨識是不是在手機上完成:開飛航模式拍一張名片,如果仍然能辨識出姓名、電話並存檔,辨識就是在手機上做的。例如片刻 離線名片(Pianke)的 Android 版沒有申請網路權限,iPhone / iPad 版程式裡沒有網路程式碼,不需要帳號。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "怎麼確認名片 App 不會上傳我的名片?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "三個方法:一、飛航模式下測試掃描與存檔;二、Android 在 Google Play 的「關於這個應用程式 → 權限」看有沒有「網路存取」;三、iPhone 在 App Store 看「App 隱私權」標籤,或用「設定 → 隱私權與安全性 → App 隱私權報告」查它連過哪些網域。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "片刻 離線名片是什麼?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "片刻 離線名片(英文名 Pianke)是 Android 與 iPhone / iPad 的名片掃描 App。掃描、OCR 辨識、整理與匯出都在手機上完成,不需帳號、不上傳雲端,也沒有廣告和追蹤。可匯出 vCard、CSV,Pro 版可產生 PDF + CSV 拜訪報告。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "片刻 離線名片要多少錢?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "免費下載,免費版可保存 15 張名片,核心功能都能用。Pro 終身版一次買斷 NT$490,不是訂閱(Android 至 2026/12/31 限時 NT$390;價格以商店顯示為準)。"
+      }
+    }
+  ]
+}
+</script>
+
+<script>
+  const root = document.documentElement;
+  const themeBtn = document.getElementById("themeBtn");
+  themeBtn.addEventListener("click", () => {
+    root.dataset.theme = (root.dataset.theme === "dark") ? "light" : "dark";
+  });
+</script>
+
+</body>
+</html>

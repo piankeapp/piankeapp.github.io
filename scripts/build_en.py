@@ -51,13 +51,19 @@ HEAD_EN = {
 
 # JSON-LD (the main block): English names/descriptions keyed by @type (+ operatingSystem prefix)
 LD_EN = {
-    "Organization": {"name": "Pianke", "alternateName": "片刻 Pianke"},
+    "Organization": {"name": "Pianke", "alternateName": ["片刻 Pianke", "片刻 離線名片"]},
     ("MobileApplication", "iOS"): {
-        "name": "Pianke", "alternateName": "片刻 Pianke",
+        "name": "Pianke", "alternateName": ["片刻 Pianke", "片刻 離線名片"],
+        "featureList": ["On-device OCR for Chinese and English cards, offline", "No account, no cloud upload",
+                        "Export vCard and CSV", "PDF + CSV visit report (Pro)",
+                        "Backup files move between Android and iPhone"],
         "description": "A fully offline business card scanner: no account, no upload, no subscription. "
                        "OCR and field parsing run on the device."},
     ("MobileApplication", "Android"): {
-        "name": "Pianke", "alternateName": "片刻 Pianke",
+        "name": "Pianke", "alternateName": ["片刻 Pianke", "片刻 離線名片"],
+        "featureList": ["On-device OCR for Chinese and English cards, offline", "No account, no cloud upload",
+                        "Export vCard and CSV", "PDF + CSV visit report (Pro)",
+                        "Backup files move between Android and iPhone"],
         "description": "A fully offline business card scanner: no internet permission, no account, "
                        "no subscription."},
 }

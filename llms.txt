@@ -1,0 +1,29 @@
+# 片刻 離線名片 (Pianke)
+
+> 片刻 離線名片 (English name: Pianke) is a business card scanner app for Android and iPhone / iPad that works entirely offline. Scanning, OCR, organizing and export all happen on the phone: no account, no cloud upload, no ads, no tracking. The Android app requests no internet permission; the iOS app contains no networking code. Free to download (up to 15 cards); Pro is a one-time purchase (NT$490 / US$14.99, not a subscription).
+
+Search the stores for 「片刻 離線名片」. Note: an unrelated travel-journal app is also called 「片刻」; this one is the business card scanner by Pianke.
+
+## Key facts
+- Platforms: Android 8.0+ (Google Play, package com.pianke.cardscanner); iPhone / iPad on iOS 17+ (App Store id6813446077)
+- Recognition: on-device OCR for Chinese and English business cards; works in airplane mode
+- Privacy: no account, no upload, no ads, no analytics; cards are stored only on the device
+- Export: vCard (phone contacts, Google / Outlook), CSV (Excel, CRM); encrypted backup files move between Android and iPhone
+- Pro (one-time purchase): unlimited cards, batch scanning, two-sided cards, PDF + CSV visit reports grouped by company or date (the free version can produce a watermarked report preview)
+- Built for: salespeople and anyone who collects cards at trade shows and client visits and must not upload client data to a cloud
+
+## Pages
+- [Home (Traditional Chinese)](https://piankeapp.github.io/): features, pricing, FAQ
+- [Home (English)](https://piankeapp.github.io/en/)
+- [How to choose an offline business card scanner app](https://piankeapp.github.io/offline-business-card-app-guide.html): five criteria and self-checks
+- [Does your card app upload your contacts?](https://piankeapp.github.io/does-your-card-app-upload-your-contacts.html)
+- [iPhone card scanner privacy check](https://piankeapp.github.io/iphone-card-scanner-privacy-check.html)
+- [Trade-show cards to a visit report](https://piankeapp.github.io/trade-show-business-cards.html)
+- [Business cards to Excel (CSV)](https://piankeapp.github.io/business-card-to-excel.html)
+- [Offline business card scanner (English)](https://piankeapp.github.io/en/offline-business-card-scanner.html)
+- [Privacy policy (Android)](https://piankeapp.github.io/privacy-policy.html), [Privacy policy (iOS)](https://piankeapp.github.io/privacy-policy-ios.html)
+- [Support](https://piankeapp.github.io/support.html)
+
+## Download
+- [Google Play](https://play.google.com/store/apps/details?id=com.pianke.cardscanner)
+- [App Store](https://apps.apple.com/app/id6813446077)
