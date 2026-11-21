@@ -5,37 +5,65 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>下載片刻 Pianke</title>
 <meta name="robots" content="noindex">
+<meta name="theme-color" content="#063633">
 <link rel="canonical" href="https://piankeapp.github.io/">
+<link rel="icon" href="img/icon-192.png">
 <style>
-  :root { --paper: #faf9f5; --ink: #14201d; --muted: #5c6b66; --teal: #0a4f4a; --cyan: #6ff6fe; --on-cyan: #04312f; }
-  @media (prefers-color-scheme: dark) { :root { --paper: #0f1716; --ink: #e8efed; --muted: #9db0ab; --teal: #6ff6fe; } }
-  html, body { margin: 0; background: var(--paper); color: var(--ink); }
-  body { font-family: "Segoe UI", system-ui, -apple-system, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif; display: grid; place-items: center; min-height: 100vh; padding: 24px 16px; box-sizing: border-box; text-align: center; }
-  main { width: min(100%, 560px); }
-  .brand { font-weight: 700; letter-spacing: .06em; color: var(--teal); margin-bottom: 28px; }
-  h1 { font-size: clamp(1.9rem, 7vw, 2.8rem); line-height: 1.3; margin: 0 0 18px; }
-  p { color: var(--muted); line-height: 1.7; margin: 0 0 24px; }
-  .free { border-block: 1px solid var(--muted); padding: 16px 0; font-weight: 650; color: var(--ink); }
-  .detail { font-size: .86rem; margin-top: 18px; }
-  .row { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
-  a.btn { display: inline-block; padding: 13px 22px; border-radius: 999px; background: var(--cyan); color: var(--on-cyan); font-weight: 650; text-decoration: none; }
-  a.home { display: inline-block; margin-top: 22px; color: var(--teal); }
-  a:focus-visible { outline: 3px solid var(--teal); outline-offset: 5px; }
+  :root { --bg: #063633; --bg2: #0a4f4a; --ink: #f2f7f5; --muted: #a9c8bf; --cyan: #6ff6fe; --line: rgba(255,255,255,.14); }
+  html, body { margin: 0; background: var(--bg); color: var(--ink); }
+  body { font-family: "Segoe UI", system-ui, -apple-system, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+         background: radial-gradient(120% 70% at 50% 0%, var(--bg2) 0%, var(--bg) 62%) fixed; min-height: 100vh; }
+  main { width: min(100% - 32px, 440px); margin: 0 auto; padding: 28px 0 36px; text-align: center; }
+  .app { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 22px; }
+  .app img { width: 56px; height: 56px; border-radius: 13px; box-shadow: 0 4px 14px rgba(0,0,0,.35); }
+  .app b { display: block; font-size: 1.15rem; text-align: left; }
+  .app span { display: block; font-size: .82rem; color: var(--muted); text-align: left; }
+  h1 { font-size: clamp(1.6rem, 7.4vw, 2.2rem); line-height: 1.32; margin: 0 0 12px; letter-spacing: .01em; }
+  .promise { color: var(--muted); line-height: 1.7; margin: 0 0 18px; font-size: .98rem; }
+  ul { list-style: none; padding: 0; margin: 0 auto 22px; display: inline-grid; gap: 8px; text-align: left; }
+  li { padding-left: 28px; position: relative; line-height: 1.45; }
+  li::before { content: ""; position: absolute; left: 0; top: .15em; width: 18px; height: 18px; border-radius: 50%;
+               background: var(--cyan) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12.5l4.2 4.2L19 7' fill='none' stroke='%23063633' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/13px no-repeat; }
+  .stores { display: flex; flex-direction: column; align-items: center; gap: 12px; margin: 4px 0 10px; }
+  .stores a { display: inline-flex; border-radius: 10px; }
+  .stores img { height: 52px; width: auto; display: block; }
+  html.is-android #ios, html.is-ios #android { order: 2; }
+  html.is-android #ios img, html.is-ios #android img { height: 40px; opacity: .85; }
+  .status { font-size: .86rem; color: var(--muted); min-height: 1.3em; margin: 0 0 22px; }
+  .phone { width: min(72%, 260px); margin: 0 auto 22px; border-radius: 28px; padding: 7px; background: #111;
+           box-shadow: 0 18px 40px rgba(0,0,0,.45), 0 0 0 1px var(--line); }
+  .phone img { display: block; width: 100%; height: auto; border-radius: 22px; }
+  .caption { font-size: .84rem; color: var(--muted); margin: -10px 0 22px; }
+  .free { border-block: 1px solid var(--line); padding: 14px 0; margin: 0 0 14px; line-height: 1.7; }
+  .free b { color: var(--cyan); }
+  .detail { font-size: .8rem; color: var(--muted); line-height: 1.7; margin: 0 0 18px; }
+  a.home { color: var(--cyan); font-size: .9rem; }
+  a:focus-visible { outline: 3px solid var(--cyan); outline-offset: 4px; }
 </style>
 </head>
 <body>
 <main>
-  <p class="brand">片刻 Pianke · 離線名片掃描</p>
-  <h1 id="benefit">名片拍下來,人脈找得到。</h1>
-  <p id="promise">拍照、確認欄位、儲存。把中英文名片變成可搜尋的聯絡人,不需帳號、不上傳。</p>
-  <p class="free">免費試掃第一張 · 最多保存 15 張<br>需要更多,再一次買斷 Pro</p>
-  <p id="status" role="status">選擇你的手機版本,開始試掃。</p>
-  <div class="row">
-    <a class="btn" id="ios" href="https://apps.apple.com/app/id6813446077?pt=129432514&ct=site-get&mt=8">App Store 下載</a>
-    <a class="btn" id="android" href="https://play.google.com/store/apps/details?id=com.pianke.cardscanner">Google Play 下載</a>
+  <div class="app">
+    <img src="img/icon-192.png" alt="" width="56" height="56">
+    <div><b>片刻 離線名片</b><span>不上傳雲端的名片掃描 App</span></div>
   </div>
-  <p class="detail" id="detail">Android 8.0 以上 · iPhone / iPad: iOS 17 以上<br>無廣告 · 不訂閱 · 售價以商店顯示為準</p>
-  <a class="home" href="index.html">看產品介紹</a>
+  <h1 id="benefit">名片拍下來，人脈找得到。</h1>
+  <p class="promise" id="promise">拍照、確認欄位、儲存。把中英文名片變成可搜尋的聯絡人，不需帳號、不上傳。</p>
+  <ul>
+    <li>辨識在手機上完成，名片不上傳雲端</li>
+    <li>勾選名片，一鍵產生 PDF＋CSV 拜訪報告</li>
+    <li>不需註冊帳號，Pro 一次買斷、不訂閱</li>
+  </ul>
+  <div class="stores">
+    <a id="ios" href="https://apps.apple.com/app/id6813446077?pt=129432514&ct=site-get&mt=8"><img src="img/badge-app-store-zh.svg" alt="從 App Store 下載" width="156" height="52"></a>
+    <a id="android" href="https://play.google.com/store/apps/details?id=com.pianke.cardscanner"><img src="img/badge-google-play-zh.png" alt="在 Google Play 下載" width="175" height="52"></a>
+  </div>
+  <p class="status" id="status" role="status">iPhone、Android 都能用，選擇你的手機版本。</p>
+  <div class="phone"><img id="shot" src="img/shot-report-ios.webp" alt="片刻的名片報告預覽畫面" width="540" height="1173" loading="lazy"></div>
+  <p class="caption">出差、展會回來，報告在手機上就做好</p>
+  <p class="free">免費試用，最多保存 <b>15 張</b>名片<br>需要更多，再一次買斷 <b>Pro</b></p>
+  <p class="detail" id="detail">iPhone／iPad：iOS 17 以上 · Android 8.0 以上<br>無廣告 · 不訂閱 · 售價以商店顯示為準</p>
+  <a class="home" href="index.html">看完整產品介紹 →</a>
 </main>
 <script>
   // Printed flyers point here as /get?a, /get?b, ... The query names the flyer version, carried into the
@@ -71,12 +99,15 @@
     var appStore = "https://apps.apple.com/app/id6813446077?pt=129432514&ct=" +
       (Object.prototype.hasOwnProperty.call(social, tag) ? "social-" + tag : /^[a-e]$/.test(tag) ? "flyer-" + tag : "site-get") + "&mt=8";
     document.getElementById("android").href = play;
+    // Both buttons carry the source: in-app browsers (TikTok, IG, LINE) often block the automatic
+    // store redirect below, and a manual tap must still count for the platform that sent the visitor.
+    document.getElementById("ios").href = appStore;
     var campaigns = {
-      a: ["名片拍下來,人脈找得到。", "拍照、確認欄位、儲存。下次找人不用再翻名片,中英文辨識全程在手機完成。"],
-      b: ["交換名片,不用交出人脈。", "名片辨識與儲存都在手機完成,不需帳號、不自動上傳。Android 版不申請網路權限,分享由你自行匯出。"],
-      c: ["展會名片,整理成報告。", "勾選這次拜訪的名片,匯出 PDF / CSV 報告:免費版提供浮水印預覽,完整報告需 Pro。iPhone、Android 都能用。"],
-      d: ["別人承諾不外流,片刻直接不連網。", "Android 版不申請網路權限;iPhone 版隱私標籤為「未收集資料」。名片辨識與儲存都在手機完成,你可以自己查證。"],
-      e: ["名片存在你手機,報告一鍵就出好。", "名片資料存在你的手機,不放雲端、不需註冊。出差回來,勾選名片就能產生 PDF / CSV 拜訪報告(Pro)。"]
+      a: ["名片拍下來，人脈找得到。", "拍照、確認欄位、儲存。下次找人不用再翻名片，中英文辨識全程在手機完成。"],
+      b: ["交換名片，不用交出人脈。", "名片辨識與儲存都在手機完成，不需帳號、不自動上傳。Android 版不申請網路權限，分享由你自行匯出。"],
+      c: ["展會名片，整理成報告。", "勾選這次拜訪的名片，匯出 PDF／CSV 報告：免費版提供浮水印預覽，完整報告需 Pro。iPhone、Android 都能用。"],
+      d: ["別人承諾不外流，片刻直接不連網。", "Android 版不申請網路權限；iPhone 版隱私標籤為「未收集資料」。名片辨識與儲存都在手機完成，你可以自己查證。"],
+      e: ["名片存在你手機，報告一鍵就出好。", "名片資料存在你的手機，不放雲端、不需註冊。出差回來，勾選名片就能產生 PDF／CSV 拜訪報告（Pro）。"]
     };
     if (Object.prototype.hasOwnProperty.call(campaigns, tag)) {
       document.getElementById("benefit").textContent = campaigns[tag][0];
@@ -86,8 +117,15 @@
     var ua = navigator.userAgent;
     var iOS = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
     var android = /Android/.test(ua);
+    if (android) {
+      document.documentElement.className = "is-android";
+      document.getElementById("shot").src = "img/shot-report-android.webp";
+      document.getElementById("shot").height = 1080;
+    } else if (iOS) {
+      document.documentElement.className = "is-ios";
+    }
     if (iOS || android) {
-      document.getElementById("status").textContent = "正在開啟" + (iOS ? " App Store" : " Google Play") + "。若未自動開啟,請點下方下載。";
+      document.getElementById("status").textContent = "正在開啟" + (iOS ? " App Store" : " Google Play") + "⋯ 沒有自動開啟的話，請點上方按鈕。";
       location.replace(iOS ? appStore : play);
     }
   })();
